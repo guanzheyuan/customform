@@ -32,7 +32,7 @@
 			<a class="navbar-brand" href="#">
 				<img src="./file/favicon.png" style="width:30px;heigth:30px;">
 				表单设计器
-				<span class="label label-default">测试</span>
+				<span class="label label-default">BETA</span>
 			</a>
 		</div>
 		<div class="collapse navbar-collapse">
@@ -86,7 +86,6 @@
 						布局设置
 					</li>
 					<li class="rows" id="estRows">
-
 						<div class="lyrow ui-draggable">
 							<a href="javascript:void(0);" class="remove label label-danger">
 								<i class="glyphicon-remove glyphicon"></i>
@@ -96,6 +95,9 @@
 								<i class="glyphicon glyphicon-move"></i>
 								拖动
 							</span>
+							<span class="configuration">
+								<button type="button" class="btn btn-default btn-xs"data-target="#editorLayout" role="button" data-toggle="modal">编辑</button>
+							</span>
 							<div class="preview">
 								<input type="text" value="12" class="form-control"></div>
 							<div class="view">
@@ -104,8 +106,7 @@
 								</div>
 							</div>
 						</div>
-
-						<div class="lyrow ui-draggable">
+						<!-- <div class="lyrow ui-draggable">
 							<a href="javascript:void(0);" class="remove label label-danger">
 								<i class="glyphicon-remove glyphicon"></i>
 								删除
@@ -122,9 +123,9 @@
 									<div class="col-md-6 column"></div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 
-						<div class="lyrow ui-draggable">
+						<!-- <div class="lyrow ui-draggable">
 							<a href="javascript:void(0);" class="remove label label-danger">
 								<i class="glyphicon-remove glyphicon"></i>
 								删除
@@ -141,9 +142,9 @@
 									<div class="col-md-4 column"></div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 
-						<div class="lyrow ui-draggable">
+						<!-- <div class="lyrow ui-draggable">
 							<a href="javascript:void(0);" class="remove label label-danger">
 								<i class="glyphicon-remove glyphicon"></i>
 								删除
@@ -161,9 +162,9 @@
 									<div class="col-md-4 column"></div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 
-						<div class="lyrow ui-draggable">
+						<!-- <div class="lyrow ui-draggable">
 							<a href="javascript:void(0);" class="remove label label-danger">
 								<i class="glyphicon-remove glyphicon"></i>
 								删除
@@ -181,7 +182,7 @@
 									<div class="col-md-4 column"></div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 
 					</li>
 				</ul>
@@ -211,7 +212,10 @@
 								拖动
 							</span>
 							<span class="configuration">
-								<span class="btn-group btn-group-xs">
+									<span class="btn-group btn-group-xs">
+										<button type="button" class="btn btn-default btn-xs"data-target="#editorTitle" role="button" data-toggle="modal">编辑</button>
+									</span>
+									<span class="btn-group btn-group-xs">
 									<a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
 										对齐
 										<span class="caret"></span>
@@ -231,36 +235,13 @@
 										</li>
 									</ul>
 								</span>
-								<span class="btn-group btn-group-xs">
-									<a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
-										标记
-										<span class="caret"></span>
-									</a>
-									<ul class="dropdown-menu">
-										<li class="active">
-											<a href="javascript:void(0);" rel="">默认</a>
-										</li>
-										<li class="">
-											<a href="javascript:void(0);" rel="muted">禁用</a>
-										</li>
-										<li class="">
-											<a href="javascript:void(0);" rel="text-warning">警告</a>
-										</li>
-										<li class="">
-											<a href="javascript:void(0);" rel="text-error">错误</a>
-										</li>
-										<li class="">
-											<a href="javascript:void(0);" rel="text-info">提示</a>
-										</li>
-										<li class="">
-											<a href="javascript:void(0);" rel="text-success">成功</a>
-										</li>
-									</ul>
-								</span>
 							</span>
 							<div class="preview">标题栏</div>
 							<div class="view">
-								<h3 contenteditable="true">h3. 这是一套可视化布局系统.</h3>
+								<p>
+									<label for="labelEdit" contenteditable="true">标题</label>
+								</p>
+								
 							</div>
 						</div>
 						<div class="box box-element ui-draggable">
@@ -275,8 +256,7 @@
 								<div class="preview">输入框</div>
 								<div class="view">
 									<div class="form-inline">
-										<label class="labelEdit" >12312312</label>
-										<input  type="text" plugins="text"  orgwidth="97" orgheight="20"  orgtype="text"  class="form-control jingjileixing" style="text-align: left;width:90%;" >
+										<input  type="text" plugins="text"  orgwidth="97" orgheight="20"  orgtype="text"  class="form-control jingjileixing" style="text-align: left;width:100%;" >
 									</div>
 								</div>
 							</div>
@@ -369,6 +349,7 @@
 		
     </script>
 
+<!--download Modal-->
 <div class="modal fade" id="downloadModal" tabindex="-1" role="dialog" aria-labelledby="downloadModalLabel" aria-hidden="true" style="display: none;">
 <div class="modal-dialog">
 <div class="modal-content">
@@ -398,4 +379,74 @@
 
 
 </div>
-</body></html>
+<!--layout modal -->
+<div class="modal fade" id="editorLayout" tabindex="-1" role="dialog" aria-labelledby="editorLayout" aria-hidden="true" style="display: none;">
+	<div class="modal-dialog" style="width:900px">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h4 class="modal-title">编辑【布局】</h4>
+		</div>
+		<div class="modal-body">
+			<div id="download-logged" class="">
+				<div class="alert alert-info">一共12列，请输入对应的列数，以及对应的比例
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="name">列（一行所占列）</label>
+				<input type="number"  class="form-control layoutCol"  autocomplete="off" name="layoutCol"  value="2" min="2" max="12" step="1" style="width:100%"/>
+			</div>
+			<div class="form-group ">
+				<label for="name">比例（每列所占比例）</label>
+				<div class="ratio">
+						<input type="number" class="form-control " style="width:7%;" value="1" min="1" max="12" step="1" >
+						<input type="number" class="form-control modal-input-number"  value="1" min="1" max="12" step="1" >
+				</div>
+			</div>
+			<div id="download-logged " class="topinfo hide">
+					<div class="alert alert-warning">
+						<a href="#" class="close" data-dismiss="alert">
+							&times;
+						</a>
+						<strong>警告！</strong><span class="info">您的网络连接有问题。</span>
+					</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-success saveLayout">保存</button>
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		</div>
+	</div>
+	</div>
+</div>
+<!--title modal -->
+<div class="modal fade" id="editorTitle" tabindex="-1" role="dialog" aria-labelledby="editorTitle" aria-hidden="true" style="display: none;">
+		<div class="modal-dialog" style="width:900px">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h4 class="modal-title">编辑【标题栏】</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label for="name">描述</label>
+					<textarea class="form-control title" style= "overflow:hidden; resize:none; "  name="title" cols="5" rows="10"></textarea>
+				</div>
+				<div id="download-logged " class="topinfo hide">
+						<div class="alert alert-warning">
+							<a href="#" class="close" data-dismiss="alert">
+								&times;
+							</a>
+							<strong>警告！</strong><span class="info">您的网络连接有问题。</span>
+						</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success saveTitle">保存</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+		</div>
+	</div>
+</body>
+</html>
