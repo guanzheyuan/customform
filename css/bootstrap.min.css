@@ -11773,7 +11773,7 @@ a:hover,
     border-bottom-color: #428bca
 }
 
-.nav a:hover .caret {
+.nav a:hover . {
     border-top-color: #2a6496;
     border-bottom-color: #2a6496
 }
