@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <!-- saved from url=(0025)http://www.ibootstrap.cn/ -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="utf-8">
 	<title>可视化表单绘制器</title>
@@ -20,6 +22,8 @@
 	<script type="text/javascript" src="./js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="./js/jquery.htmlClean.js"></script>
 	<script type="text/javascript" src="./js/scripts.min.js"></script>
+	<script src="./ueditor/ueditor.config.js"></script> 
+	<script src="./ueditor/ueditor.all.js"></script>
 </head>
 <body class="edit" style="min-height: 798px;">
 	<div class="navbar navbar-inverse navbar-fixed-top navbar-layoutit">
@@ -85,7 +89,7 @@
 							</div>
 						</div>
 						<i class="glyphicon-plus glyphicon"></i>
-						布局设置
+						布局
 					</li>
 					<li class="rows" id="estRows">
 						<div class="lyrow ui-draggable">
@@ -107,6 +111,25 @@
 									<div class="col-md-12 column"></div>
 								</div>
 							</div>
+						</div>
+						<div class="lyrow ui-draggable">
+								<a href="javascript:void(0);" class="remove label label-danger">
+									<i class="glyphicon-remove glyphicon"></i>
+									删除
+								</a>
+								<span class="drag label label-default">
+									<i class="glyphicon glyphicon-move"></i>
+									拖动
+								</span>
+								<div class="preview">
+									<input type="text" value="12" class="form-control"></div>
+								<div class="view">
+									<div class="row clearfix">
+										<div class="col-md-12" style="padding:10px;">
+												<textarea id="formEditor" type="text/plain"></textarea>
+										</div>
+									</div>
+								</div>
 						</div>
 						<!-- <div class="lyrow ui-draggable">
 							<a href="javascript:void(0);" class="remove label label-danger">
@@ -209,9 +232,9 @@
 								<i class="glyphicon glyphicon-remove"></i>
 								删除
 							</a>
-							<span class="drag label label-default">
+							<span class="drag label label-default UEditorclick">
 								<i class="glyphicon glyphicon-move"></i>
-								拖动
+								拖动/单击
 							</span>
 							<span class="configuration">
 									<span class="btn-group btn-group-xs">
@@ -253,9 +276,9 @@
 								<i class="glyphicon glyphicon-remove"></i>
 								删除
 							</a>
-							<span class="drag label label-default">
+							<span class="drag label label-default UEditorclick">
 								<i class="glyphicon glyphicon-move"></i>
-								拖动
+								拖动/单击
 							</span>
 							<span class="configuration">
 								<span class="btn-group btn-group-xs">
@@ -265,7 +288,7 @@
 							<div class="preview">输入框</div>
 							<div class="view">
 								<div class="form-inline ">
-									<input  type="text" plugins="text"  orgwidth="" orgheight="" orgname=" "  orgtype="text"  class="form-control jingjileixing" style="text-align: left;width:100%;" >
+									<input  type="text" plugins="text"  orgwidth="" orgheight="" orgname=" "  orgtype="text"  class="form-control jingjileixing default"   >
 								</div>
 							</div>
 						</div>
