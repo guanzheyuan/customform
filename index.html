@@ -104,8 +104,7 @@
 							<span class="configuration">
 								<button type="button" class="btn btn-default btn-xs"data-target="#editorLayout" role="button" data-toggle="modal">编辑</button>
 							</span>
-							<div class="preview">
-								<input type="text" value="12" class="form-control"></div>
+							<div class="preview">栅格布局</div>
 							<div class="view">
 								<div class="row clearfix">
 									<div class="col-md-12 column"></div>
@@ -121,8 +120,7 @@
 									<i class="glyphicon glyphicon-move"></i>
 									拖动
 								</span>
-								<div class="preview">
-									<input type="text" value="12" class="form-control"></div>
+								<div class="preview">表格布局</div>
 								<div class="view">
 									<div class="row clearfix">
 										<div class="col-md-12" style="padding:10px;">
@@ -297,9 +295,9 @@
 									<i class="glyphicon glyphicon-remove"></i>
 									删除
 								</a>
-								<span class="drag label label-default">
+								<span class="drag label label-default UEditorclick">
 									<i class="glyphicon glyphicon-move"></i>
-									拖动
+									拖动/单机
 								</span>
 								<span class="configuration">
 									<span class="btn-group btn-group-xs">
@@ -734,7 +732,7 @@
 		</div>
 </div>
 <!--input modal -->
-<div class="modal fade" id="editorInputModal" tabindex="-1" role="dialog" aria-labelledby="editorInputModal" aria-hidden="true" style="display: none;">
+<div class="modal fade" id="editorInputModal" tabindex="-1"  role="dialog" aria-labelledby="editorInputModal" aria-hidden="true" style="display: none;">
 		<div class="modal-dialog" style="width:900px">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -745,7 +743,7 @@
 				<form id="inputForm"  role="form">
 					<div class="form-group">
 						<label for="name">字段标题</label>
-						<!-- <input type="text" name="orgname" autocomplete="off" class="form-control" placeholder="字段标题" style="width: 100%;"> -->
+						<!-- <input type="text" name="orgname" autocomplete="off" class="form-control hide" placeholder="字段标题" style="width: 100%;"> -->
 						<select class="form-control" style="width:100%;" name="orgname" autocomplete="off"></select>
 					</div>
 					<div class="form-group">
