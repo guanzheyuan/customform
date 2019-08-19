@@ -360,16 +360,16 @@
 										<i class="glyphicon glyphicon-remove"></i>
 										删除
 									</a>
-									<span class="drag label label-default">
+									<span class="drag label label-default UEditorclick">
 										<i class="glyphicon glyphicon-move"></i>
-										拖动
+										拖动/单击
 									</span>
 									<span class="configuration">
 										<span class="btn-group btn-group-xs">
 											<button type="button" class="btn btn-default btn-xs" style="margin-right:10px;" data-target="#editorCheckboxModal" role="button" data-toggle="modal">编辑</button>
 										</span>
 									</span>
-									<div class="preview">多单选</div>
+									<div class="preview">多选</div>
 									<div class="view">
 										<div class="form-inline">
 											<input type="checkbox" style="vertical-align: initial;" >
@@ -382,9 +382,9 @@
 										<i class="glyphicon glyphicon-remove"></i>
 										删除
 									</a>
-									<span class="drag label label-default">
+									<span class="drag label label-default UEditorclick">
 										<i class="glyphicon glyphicon-move"></i>
-										拖动
+										拖动/单击
 									</span>
 									<span class="configuration">
 										<span class="btn-group btn-group-xs">
@@ -659,8 +659,6 @@
 <!-- /.modal-content -->
 </div>
 <!-- /.modal-dialog -->
-
-
 </div>
 <!--layout modal -->
 <div class="modal fade" id="editorLayout" tabindex="-1" role="dialog" aria-labelledby="editorLayout" aria-hidden="true" style="display: none;">
@@ -1112,6 +1110,50 @@
 	</div>
 	</div>
 </div>
+<!-- Radio modal table-->
+<div class="modal fade" id="editorRadioTableModal" tabindex="-1" role="dialog" aria-labelledby="editorRadioModal" aria-hidden="true" style="display: none;">
+	<div class="modal-dialog" style="width:900px">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h4 class="modal-title">编辑【单选框】</h4>
+		</div>
+		<div class="modal-body">
+			<form id="radioForm"  role="form">
+					<div class="form-group">
+						<label for="name">字段标题</label>
+						<input type="text" name="orgname" autocomplete="off" class="form-control" placeholder="字段标题" style="width: 97%;">
+					</div>
+					<div class="form-group">
+						<label for="name">字段名称</label>
+						<input type="text" name="fieldname" autocomplete="off" class="form-control" placeholder="字段名称" style="width: 97%;">
+					</div>
+					<div class="form-group">
+						<table class="table">
+							<thead >
+								<tr>
+								<th>值名</th>
+								<th>值</th>
+								<th>是否选中</th>
+								<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+							</table>
+							<button type="button" class="btn btn-default btn-sm addRadio">
+								添加
+							</button>
+					</div>
+			</form>
+		</div>
+		<div class="modal-footer">
+			<button type="button" data-name="data-radio"  class="btn btn-success savecontent">保存</button>
+			<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+		</div>
+	</div>
+	</div>
+</div>
 <!-- Radio Value modal-->
 <div class="modal fade" id="addRadio" tabindex="-1" role="dialog" aria-labelledby="addRadio" aria-hidden="true" style="display: none;">
 		<div class="modal-dialog" style="width:900px">
@@ -1191,6 +1233,50 @@
 		</div>
 		</div>
 </div>
+<!--checkbox modal tabe--> 
+<div class="modal fade" id="editorCheckboxTableModal" tabindex="-1" role="dialog" aria-labelledby="editorCheckboxModal" aria-hidden="true" style="display: none;">
+	<div class="modal-dialog" style="width:900px">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h4 class="modal-title">编辑【多选框】</h4>
+		</div>
+		<div class="modal-body">
+			<form id="checkForm"  role="form">
+					<div class="form-group">
+						<label for="name">字段标题</label>
+						<input type="text" name="orgname" autocomplete="off" class="form-control" placeholder="字段标题" style="width: 97%;">
+					</div>
+					<div class="form-group">
+						<label for="name">字段名称</label>
+						<input type="text" name="fieldname" autocomplete="off" class="form-control" placeholder="字段名称" style="width: 100%;">
+					</div>
+					<div class="form-group">
+						<table class="table">
+							<thead >
+								<tr>
+								<th>值名</th>
+								<th>值</th>
+								<th>是否选中</th>
+								<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+							</table>
+							<button type="button" class="btn btn-default btn-sm addCheckbox">
+								添加
+							</button>
+					</div>
+				</form>
+		</div>
+		<div class="modal-footer">
+			<button type="button" data-name="data-check"  class="btn btn-success savecontent">保存</button>
+			<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+		</div>
+	</div>
+	</div>
+</div>
 <!--checkbox value modal--> 
 <div class="modal fade" id="addCheckbox" tabindex="-1" role="dialog" aria-labelledby="addCheckbox" aria-hidden="true" style="display: none;">
 		<div class="modal-dialog" style="width:900px">
@@ -1269,6 +1355,50 @@
 			</div>
 		</div>
 		</div>
+</div>
+<!-- datetime modal table-->
+<div class="modal fade" id="editorDateTimeTableModal" tabindex="-1" role="dialog" aria-labelledby="editorDateTimeModal" aria-hidden="true" style="display: none;">
+	<div class="modal-dialog" style="width:900px">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h4 class="modal-title">编辑【时间框】</h4>
+		</div>
+		<div class="modal-body">
+				<form id="dateTimeForm"  role="form">
+						<div class="form-group">
+							<label for="name">字段标题</label>
+							<input type="text" name="orgname"autocomplete="off"  class="form-control" placeholder="字段标题" style="width: 100%;">
+					   </div>
+						<div class="form-group">
+							<label for="name">字段名称</label>
+							<input type="text" name="fieldname"  autocomplete="off"class="form-control" placeholder="字段名称" style="width: 100%;">
+						</div>
+						<div class="form-group">
+							<label for="name">是否必填</label>
+							<select class="form-control isRequired"  name="isRequired" id="sel1" placeholder="是否必填"  style="width:100%;"> 
+								<option value="N" >否</option>  
+								<option value="Y">是</option>  
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="name">时间类型</label>
+							<select class="form-control type" name="type" placeholder="时间类型"  style="width: 100%;"> 
+								<option value="date">年月日</option>
+								<option value="time">上午/下午|时分</option>
+								<option value="datetime-local">年月日|上午/下午</option>
+								<option value="month">年月</option>
+								<option value="week">年周</option>
+							</select>
+						</div>
+				</form>
+		</div>
+		<div class="modal-footer">
+			<button type="button" data-name="data-date"  class="btn btn-success savecontent">保存</button>
+			<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+		</div>
+	</div>
+	</div>
 </div>
 </body>
 </html>
