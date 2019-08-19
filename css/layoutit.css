@@ -219,5 +219,5 @@ a.language-selected { font-style: italic; font-weight: bold; }
 .modal-input-number{width:7%; float: left;margin-left:8%;margin-top:-4%}
 .modal-input-numberNext{width:7%; float: left;margin-left:1%;margin-top:-4%}
 .default{
-	text-align: left;width:100%;
+	width:100%;
 }
