@@ -120,6 +120,8 @@ body {
 	-ms-transition: all 500ms ease;
 	-o-transition: all 500ms ease;
 	transition: all 500ms ease;
+	top: -20px !important;
+    right: 25px !important;
 }
 .demo .drag, .demo .remove {
 	filter: alpha(opacity=20); opacity: 0.2;
