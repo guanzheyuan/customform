@@ -19,7 +19,15 @@
 				</a>
 			  	<a class="brand" href="index.html">
 			  		自定义表单
-			  	</a>
+				  </a>
+				  <ul class="nav">
+					<li class="active">
+					  <a href="#">首页</a>
+					</li>
+					<li><a href="#">动态表单</a></li>
+					<li><a href="#">数据字典</a></li>
+					<li><a href="#">表单参数</a></li>
+				  </ul>
 				<div class="nav-collapse collapse navbar-inverse-collapse">
 					<ul class="nav pull-right">
 						<li class="nav-user dropdown">
@@ -36,31 +44,7 @@
 	<div class="wrapper">
 		<div class="container">
 			<div class="row">
-				<div class="span3">
-					<div class="sidebar">
-						<ul class="widget widget-menu unstyled">
-							<li class="active">
-								<a href="main.html">
-									<i class="menu-icon icon-dashboard"></i>
-									动态表单
-								</a>
-                            </li>
-                            <li class="active">
-								<a href="main.html">
-									<i class="menu-icon icon-dashboard"></i>
-									数据字典
-								</a>
-                            </li>
-                            <li class="active">
-								<a href="main.html">
-									<i class="menu-icon icon-dashboard"></i>
-									表单参数
-								</a>
-							</li>
-						</ul><!--/.widget-nav-->
-					</div><!--/.sidebar-->
-				</div><!--/.span3-->
-				<div class="span9">
+				<div class="">
 					<div class="content">
 						<div class="module">
 							<div class="module-head">
@@ -150,5 +134,9 @@
 				alert(123);
 			});
 		} );
+		$(".nav>li").click(function(e){
+			$(".nav>li").removeClass("active")
+			$(this).addClass("active")
+		})
 	</script>
 </body>
