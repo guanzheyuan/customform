@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,27 +8,22 @@
 	<link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.min.css">
 	<link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 	<link type="text/css" href="css/theme.css" rel="stylesheet">
+	<link type="text/css" href="css/menu.css" rel="stylesheet">
 	<link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
-	<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+	<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
+		rel='stylesheet'>
 </head>
+
 <body>
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
-			<div class="container">
+			<div class="">
 				<a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
 					<i class="icon-reorder shaded"></i>
 				</a>
-			  	<a class="brand" href="index.html">
-			  		自定义表单
-				  </a>
-				  <ul class="nav">
-					<li class="active">
-					  <a href="#">首页</a>
-					</li>
-					<li><a href="#">动态表单</a></li>
-					<li><a href="#">数据字典</a></li>
-					<li><a href="#">表单参数</a></li>
-				  </ul>
+				<a class="brand" href="main.html">
+					自定义表单
+				</a>
 				<div class="nav-collapse collapse navbar-inverse-collapse">
 					<ul class="nav pull-right">
 						<li class="nav-user dropdown">
@@ -41,10 +37,37 @@
 			</div>
 		</div><!-- /navbar-inner -->
 	</div><!-- /navbar -->
-	<div class="wrapper">
-		<div class="container">
-			<div class="row">
-				<div>
+	<div class="">
+		<div class="" >
+			<div class="row" style="display: flex;">
+				<div class="navbarMenu">
+					<div class="sidebar">
+						<ul class="widget widget-menu unstyled">
+							<li class="active">
+								<a href="main.html">
+									<i class="menu-icon icon-dashboard"></i>
+									动态表单
+								</a>
+							</li>
+							<li class="active">
+								<a href="main.html">
+									<i class="menu-icon icon-dashboard"></i>
+									数据字典
+								</a>
+							</li>
+							<li class="active">
+								<a href="main.html">
+									<i class="menu-icon icon-dashboard"></i>
+									表单参数
+								</a>
+							</li>
+						</ul>
+						<!--/.widget-nav-->
+					</div>
+					<!--/.sidebar-->
+				</div>
+				<!--/.span3-->
+				<div class="">
 					<div class="content">
 						<div class="module">
 							<div class="module-head">
@@ -56,6 +79,7 @@
 								</div>
 							</div>
 							<div class="module-body table">
+<<<<<<< HEAD
 								<table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display" width="100%">
 								</table>
 							</div>
@@ -63,9 +87,27 @@
 					<br />
 					</div><!--/.content-->
 				</div><!--/.span9-->
+=======
+								<table cellpadding="0" cellspacing="0" border="0"
+									class="datatable-1 table table-bordered table-striped	 display" width="100%">
+
+								</table>
+							</div>
+						</div>
+						<!--/.module-->
+
+						<br />
+
+					</div>
+					<!--/.content-->
+				</div>
+				<!--/.span9-->
+>>>>>>> 45e04e957c8b8948e95f333c7cedf32ae4b59848
 			</div>
-		</div><!--/.container-->
-	</div><!--/.wrapper-->
+		</div>
+		<!--/.container-->
+	</div>
+	<!--/.wrapper-->
 	<div class="footer">
 		<div class="container">
 		</div>
@@ -122,26 +164,28 @@
 	<script src="scripts/datatables/jquery.dataTables.js"></script>
 	<script src="./js/config.js"></script>
 	<script>
-		function design(obj){
-			window.open("./index.html?id="+$(obj).attr('title'), "_blak");
+		function design(obj) {
+			window.open("./index.html?id=" + $(obj).attr('title'), "_self");
 		}
-		$(document).ready(function() {
-			var param = {
-			};
+		$(document).ready(function () {
+			var param = {};
 			$.ajax({
 				type: 'POST',
-				dataType:'json',
+				dataType: 'json',
 				contentType: "application/json;charset=UTF-8",
 				url: configJson.loadZWURL.customerFormList,
-				data:JSON.stringify(param),
-				success:function(data){
+				data: JSON.stringify(param),
+				success: function (data) {
 					console.log(data);
 					$('.datatable-1').dataTable({
 						"data": data,
-						"bStateSave": true,//狀態保存
-						"aoColumnDefs": [
-							{"orderable":false,"aTargets":[0,4]}// 制定列不參與排序
+						"bStateSave": true, //狀態保存
+						"aoColumnDefs": [{
+								"orderable": false,
+								"aTargets": [0, 4]
+							} // 制定列不參與排序
 						],
+<<<<<<< HEAD
 						"columns": [
 							{ "title": "事项名称",data:'name'},
 							{ "title": "表单版本",data:'version'},
@@ -152,8 +196,38 @@
 									return '<a class="btn btn-primary">编辑</a>&nbsp;&nbsp;<a class="btn btn-danger">删除</a>';
 								}else if('UED' == full.formType){
 									return '<a class="btn btn-primary" >编辑</a>&nbsp;&nbsp;<a class="btn btn-info design" title="'+full.id+'" onclick="javascript:design(this)">设计</a>&nbsp;&nbsp;<a class="btn btn-danger">删除</a>';
+=======
+						"columns": [{
+								"title": "事项名称",
+								data: 'name'
+							},
+							{
+								"title": "表单版本",
+								data: 'version'
+							},
+							{
+								"title": "配置时间",
+								data: 'createDate'
+							},
+							{
+								"title": "状态",
+								data: 'state.title'
+							},
+							{
+								"title": "操作",
+								width: 200,
+								data: 'formType',
+								render: function (data, type, full, meta) {
+									if ('UP' == full.formType) {
+										return '<a class="btn btn-primary">编辑</a>&nbsp;&nbsp;<a class="btn btn-danger">删除</a>';
+									} else if ('UED' == full.formType) {
+										return '<a class="btn btn-primary">编辑</a>&nbsp;&nbsp;<a class="btn btn-info design" title="' +
+											full.id +
+											'" onclick="javascript:design(this)">设计</a>&nbsp;&nbsp;<a class="btn btn-danger">删除</a>';
+									}
+>>>>>>> 45e04e957c8b8948e95f333c7cedf32ae4b59848
 								}
-							}}
+							}
 						],
 						language: {
 							"sProcessing": "处理中...",
@@ -168,24 +242,27 @@
 							"sEmptyTable": "表中数据为空",
 							"sLoadingRecords": "载入中...",
 							"sInfoThousands": ",",
-								"oPaginate": {
+							"oPaginate": {
 								"sFirst": "首页",
 								"sPrevious": "上页",
 								"sNext": "下页",
 								"sLast": "末页"
-								},
-								"oAria": {
+							},
+							"oAria": {
 								"sSortAscending": ": 以升序排列此列",
 								"sSortDescending": ": 以降序排列此列"
-								}
 							}
+						}
 					});
 					$('.dataTables_paginate').addClass("btn-group datatable-pagination");
 					$('.dataTables_paginate > a').wrapInner('<span />');
-					$('.dataTables_paginate > a:first-child').append('<i class="icon-chevron-left shaded"></i>');
-					$('.dataTables_paginate > a:last-child').append('<i class="icon-chevron-right shaded"></i>');
+					$('.dataTables_paginate > a:first-child').append(
+						'<i class="icon-chevron-left shaded"></i>');
+					$('.dataTables_paginate > a:last-child').append(
+						'<i class="icon-chevron-right shaded"></i>');
 				}
 			});
+<<<<<<< HEAD
 			
 			$(".add").click(function(){
 				$('#myModal').modal('show');
@@ -205,6 +282,11 @@
 			});
 		} );
 		$(".nav>li").click(function(e){
+=======
+
+		});
+		$(".nav>li").click(function (e) {
+>>>>>>> 45e04e957c8b8948e95f333c7cedf32ae4b59848
 			$(".nav>li").removeClass("active")
 			$(this).addClass("active")
 		})
