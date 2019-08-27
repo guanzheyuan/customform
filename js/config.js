@@ -1,9 +1,9 @@
-var $IP ='http://10.45.67.193:8580/customer';
+var $IP ='http://localhost:8081/customer';
 var configJson = {
     loadZWURL:{
         customerFormList:$IP+'/estCustomerform/queryCustomerform',
         customer:$IP+'/estCustomerformContent/getNewByCid/',
-        saveCustomer:$IP+'/customer/estCustomerformContent/insert',
+        saveCustomer:$IP+'/estCustomerformContent/insert',
         insertCustomer:$IP+'/estCustomerform/insert'
     }
 }

@@ -110,14 +110,22 @@
 				</h4>
 			</div>
 			<div class="modal-body">
+				<div class="alert alert-warning hide">
+						<a href="#" class="close" data-dismiss="alert">
+							&times;
+						</a>
+						<strong>警告！</strong><div class="message"></div>
+				</div>
 				<form id="inputForm"  role="form">
-					<div class="form-group" id="">
-						<label for="name">表单编码</label>
-						 <input type="text" name="code" autocomplete="off" class="form-control hide" placeholder="字段标题" style="width:96%;"> 
+					<div class="form-group ">
+						<label for="name" >表单名称</label>
+						<div class="invalid-feedback hide"><small>表单名称不能为空!</small></div>
+						<input type="text" name="name" autocomplete="off" class="form-control" placeholder="表单名称" style="width:96%;" required="required">
 					</div>
-					<div class="form-group">
-						<label for="name">表单名称</label>
-						<input type="text" name="name" autocomplete="off" class="form-control" placeholder="字段名称" style="width:96%;">
+					<div class="form-group has-error" id="">
+						<label for="name">表单编码</label>
+						<div class="invalid-feedback hide"><small>表单编码不能为空!</small></div>
+						 <input type="text" name="code" autocomplete="off" class="form-control hide" placeholder="表单编码" style="width:96%;"> 
 					</div>
 					<div class="form-group">
 						<label for="name">表单类型</label>
@@ -149,9 +157,9 @@
 	<script src="./js/config.js"></script>
 	<script>
 		function design(obj) {
-			window.open("./index.html?id=" + $(obj).attr('title'), "_self");
+			window.open("./index.html?id=" + $(obj).attr('title')+"&formType="+$(obj).attr('type'), "_self");
 		}
-		$(document).ready(function () {
+		function loadDate(){
 			var param = {};
 			$.ajax({
 				type: 'POST',
@@ -160,7 +168,6 @@
 				url: configJson.loadZWURL.customerFormList,
 				data: JSON.stringify(param),
 				success: function (data) {
-					console.log(data);
 					$('.datatable-1').dataTable({
 						"data": data,
 						"bStateSave": true, //狀態保存
@@ -170,7 +177,7 @@
 							}  
 						],
 						"columns": [{
-								"title": "事项名称",
+								"title": "表单名称",
 								data: 'name'
 							},
 							{
@@ -191,9 +198,9 @@
 								data: 'formType',
 								render: function (data, type, full, meta) {
 									if ('UP' == full.formType) {
-										return '<a class="btn btn-primary">编辑</a>&nbsp;&nbsp;<a class="btn btn-danger">删除</a>';
+										return '<a class="btn btn-primary">编辑</a>&nbsp;&nbsp;<a class="btn " title="' +full.id + '" >设计</a>&nbsp;&nbsp;<a class="btn btn-danger">删除</a>';
 									} else if ('UED' == full.formType) {
-										return '<a class="btn btn-primary">编辑</a>&nbsp;&nbsp;<a class="btn btn-info design" title="' +full.id + '" onclick="javascript:design(this)">设计</a>&nbsp;&nbsp;<a class="btn btn-danger">删除</a>';
+										return '<a class="btn btn-primary">编辑</a>&nbsp;&nbsp;<a class="btn btn-info design" title="' +full.id + '" type="'+full.formType+'" onclick="javascript:design(this)">设计</a>&nbsp;&nbsp;<a class="btn btn-danger">删除</a>';
 									}
 								}
 							}
@@ -229,19 +236,57 @@
 					$('.dataTables_paginate > a:last-child').append( '<i class="icon-chevron-right shaded"></i>');
 				}
 			});
+		}
+		$(document).ready(function () {
+			loadDate();
 			$(".add").click(function(){
 				$('#myModal').modal('show');
 			});
-			$(".submitCustFrom").click(function(){
-				var inputFormArray = $("#inputForm").serializeArray();
+			$(".submitCustFrom").click(function(event){
+				var $name = $("#inputForm [name=name]");
+				var $code = $("#inputForm [name=code]");
+				if('' == $name.val()){
+					$name.parent().find('.invalid-feedback').removeClass('hide');
+					$name.parent().find('.invalid-feedback').css("color",'#bb5454');
+					$name.css("border-color",'#bb5454');
+					return ;
+				}else{
+					$name.parent().find('.invalid-feedback').addClass('hide');
+					$name.css("border-color",'#cccccc');
+				}
+				if('' == $code.val()){
+					$code.parent().find('.invalid-feedback').removeClass('hide');
+					$code.parent().find('.invalid-feedback').css("color",'#bb5454');
+					$code.css("border-color",'#bb5454');
+					return ;
+				}else{
+					$code.parent().find('.invalid-feedback').addClass('hide');
+					$code.css("border-color",'#cccccc');
+				}
+				var inputForm = {
+					code:$("#inputForm [name=code]").val(),
+					name:$("#inputForm [name=name]").val(),
+					formType:$("#inputForm [name=formType]").val(),
+					common:$("#inputForm [name=common]").val()
+				}
 				$.ajax({
 					type: 'POST',
 					dataType:'json',
 					contentType: "application/json;charset=UTF-8",
 					url: configJson.loadZWURL.insertCustomer,
-					data:JSON.stringify(inputFormArray),
+					data:JSON.stringify(inputForm),
 					success:function(data){
-						console.log(data);
+						if(data){
+							if('A' == data.state.code){
+								$('#myModal').modal('hide');
+							}else{
+								$("#inputForm .message").removeClass('hide')
+								$("#inputForm .message").html('新增失败');
+							}
+						}else{
+							$("#inputForm .message").removeClass('hide')
+							$("#inputForm .message").html('新增失败');
+						}
 					}
 				});
 			});
