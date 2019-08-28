@@ -9,6 +9,7 @@ var configJson = {
         updateCustomer:$IP+'/estCustomerform/update'
     },
     loadJJURl:{
-        loadForm:$JJIP+'/formdesign/getAllCustomForm'
+        loadForm:$JJIP+'/formdesign/getAllCustomForm',
+        updateForm:$JJIP+'/formdesign/updateCustomForm'
     }
 }
