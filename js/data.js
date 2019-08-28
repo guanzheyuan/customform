@@ -1,8 +1,6 @@
 var formEditorid = '';
 $(document).ready(function () {
     loadContent();
-    loadIndex();
-
     $(".saveFrom").click(function(){
         console.log(12);
         var inParam = {
@@ -109,49 +107,65 @@ $(document).ready(function () {
         }
     });
 });
-function loadIndex(){
+function loadContent(){
     var formType = GetQueryString('formType');
     if('UED' == formType){
-        console.log(formType);
         $(".grid-layout").css("display","none");
         $(".table-drag").css("display","none");
-    }
-}
-function loadContent(){
-    console.log('loading');
-    $.ajax({
-        type: 'GET',
-        dataType:'json',
-        contentType: "application/json;charset=UTF-8",
-        async:true,
-        url: configJson.loadZWURL.customer+GetQueryString('id'),
-        success:function(data){
-            console.log('dataing');
-            console.log('data',data);
-            if(data){
-                var ueditorId = formEditor+"_"+Math.floor(Math.random()*1000);;
-                var ueditorHtml = '<div class="lyrow ui-draggable"><div class="preview">表格布局</div><div class="view"><div class="row clearfix"><div class="col-md-12" style="padding:10px;"> <textarea id="'+ueditorId+'" type="text/plain"></textarea></div></div></div> </div>'
-                loadUEditor(ueditorId);
-                UEditorAddListener(ueditorId);
-                window.UEditorId = ueditorId;
-                $(".demo").html(ueditorHtml);
-                formEditorid = ueditorId;
-                if( '' != data.content){
-                    setTimeout(function(){
-                        UE.getEditor(ueditorId).setContent(data.content, undefined);
-                    },100)
+        $.ajax({
+            type: 'GET',
+            dataType:'json',
+            contentType: "application/json;charset=UTF-8",
+            async:true,
+            url: configJson.loadZWURL.customer+GetQueryString('id'),
+            success:function(data){
+                if(data){
+                    var ueditorId = formEditor+"_"+Math.floor(Math.random()*1000);;
+                    var ueditorHtml = '<div class="lyrow ui-draggable"><div class="preview">表格布局</div><div class="view"><div class="row clearfix"><div class="col-md-12" style="padding:10px;"> <textarea id="'+ueditorId+'" type="text/plain"></textarea></div></div></div> </div>'
+                    loadUEditor(ueditorId);
+                    UEditorAddListener(ueditorId);
+                    window.UEditorId = ueditorId;
+                    $(".demo").html(ueditorHtml);
+                    formEditorid = ueditorId;
+                    if( '' != data.content){
+                        setTimeout(function(){
+                            UE.getEditor(ueditorId).setContent(data.content, undefined);
+                        },100)
+                    }
+                }else{
+                    $(".table-drag").css("display","block");
                 }
-            }else{
-                $(".table-drag").css("display","block");
-            }
-        },
-    　  complete : function(XMLHttpRequest,status){ //请求完成后最终执行参数
+            },
+        　  complete : function(XMLHttpRequest,status){ //请求完成后最终执行参数
         　　　　if(status=='timeout'){//超时,status还有success,error等值的情况
         　　　　　  alert("超时!");
         　　　　}
-    　　}
-    });
+        　　}
+        });
+    }else if('UEG' == formType){
+        $(".table-layout").css("display","none");
+        $.ajax({
+            type: 'GET',
+            dataType:'json',
+            contentType: "application/json;charset=UTF-8",
+            async:true,
+            url: configJson.loadZWURL.customer+GetQueryString('id'),
+            success:function(data){
+                if(data){
+                    console.log(data);
+                }else{
+                    $(".table-drag").css("display","block");
+                }
+            },
+        　  complete : function(XMLHttpRequest,status){ //请求完成后最终执行参数
+        　　　　if(status=='timeout'){//超时,status还有success,error等值的情况
+        　　　　　  alert("超时!");
+        　　　　}
+        　　}
+        });
+    }
 }
+
 function GetQueryString(name){
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
     var r = window.location.search.substr(1).match(reg);

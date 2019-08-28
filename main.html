@@ -6,14 +6,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>自定义表单</title>
 	<link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap-select.css">
 	<link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 	<link type="text/css" href="css/theme.css" rel="stylesheet">
 	<link type="text/css" href="css/menu.css" rel="stylesheet">
 	<link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
-	<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
-		rel='stylesheet'>
 </head>
-
 <body>
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
@@ -99,8 +97,8 @@
 </div>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
+	<div class="modal-dialog" >
+		<div class="modal-content" >
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 					&times;
@@ -109,7 +107,7 @@
 					新增表单
 				</h4>
 			</div>
-			<div class="modal-body">
+			<div class="modal-body" style="height:600px;">
 				<div class="alert alert-warning hide">
 						<a href="#" class="close" data-dismiss="alert">
 							&times;
@@ -131,7 +129,7 @@
 						<label for="name">表单类型</label>
 						<select name="formType" autocomplete="off" class="form-control" style="width:98%;">
 							<option value="UED">模板设计</option>
-							<option value="UEGRID">栅格类型</option>
+							<option value="UEG">栅格类型</option>
 							<option value="UE">自定义类型</option>
 						</select>
 					</div>
@@ -139,12 +137,16 @@
 						<label for="name">表单说明</label>
 						<textarea name="common" class="form-control" style="width:96%;"></textarea>
 					</div>
+					<div class="form-group bingdForm">
+						<label for="name">绑定经济表单</label>
+						<select class="selectpicker form-control bingdFormsel" name="JJSel" style="width:98%;"></select>
+					</div>
 				</form>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
 				</button>
-				<button type="button" class="btn btn-primary submitCustFrom">
+				<button type="button"  data-type="add" class="btn btn-primary submitCustFrom">
 					提交
 				</button>
 			</div>
@@ -153,11 +155,30 @@
 </div>
 	<script src="scripts/jquery-1.9.1.min.js"></script>
 	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="./bootstrap/js/bootstrap-select.js"></script>
 	<script src="scripts/datatables/jquery.dataTables.js"></script>
 	<script src="./js/config.js"></script>
 	<script>
 		function design(obj) {
 			window.open("./index.html?id=" + $(obj).attr('title')+"&formType="+$(obj).attr('type'), "_self");
+		}
+		function editShow(obj){
+			var name  = $(obj).attr('name');
+			var code = $(obj).attr('code');
+			var formType = $(obj).attr('formType');
+			var common = $(obj).attr('common');
+			var id  = $(obj).attr('id');
+			var dirId = $(obj).attr('dirId');
+			var formId = $(obj).attr('formId');
+			$("#myModal .bingdFormsel").selectpicker("val",formId+'&'+dirId);
+			$("#myModal [name=name]").val(name);
+			$("#myModal [name=code]").val(code);
+			$("#myModal [name=formType]").val(formType);
+			$("#myModal [name=common]").val(common);
+			$("#myModal .submitCustFrom").attr('data-type','edit');
+			$("#myModal .submitCustFrom").attr('data-id',id);
+			$("#myModal .modal-title").html('修改表单');
+			$('#myModal').modal('show');
 		}
 		function loadDate(){
 			var param = {};
@@ -198,9 +219,11 @@
 								data: 'formType',
 								render: function (data, type, full, meta) {
 									if ('UP' == full.formType) {
-										return '<a class="btn btn-primary">编辑</a>&nbsp;&nbsp;<a class="btn " title="' +full.id + '" >设计</a>&nbsp;&nbsp;<a class="btn btn-danger">删除</a>';
+										return '<a class="btn btn-primary" id="' +full.id + '"  name="'+full.name+'" code="'+full.code+'" formType="'+full.formType+'" common="'+full.common+'" formId="'+full.formId+'" dirId="'+full.dirId+'" onclick="javascript:editShow(this)">编辑</a>&nbsp;&nbsp;<a class="btn " title="' +full.id + '" >设计</a>&nbsp;&nbsp;<a class="btn btn-danger">删除</a>';
 									} else if ('UED' == full.formType) {
-										return '<a class="btn btn-primary">编辑</a>&nbsp;&nbsp;<a class="btn btn-info design" title="' +full.id + '" type="'+full.formType+'" onclick="javascript:design(this)">设计</a>&nbsp;&nbsp;<a class="btn btn-danger">删除</a>';
+										return '<a class="btn btn-primary" id="' +full.id + '"  name="'+full.name+'" code="'+full.code+'" formType="'+full.formType+'" common="'+full.common+'" formId="'+full.formId+'" dirId="'+full.dirId+'" onclick="javascript:editShow(this)">编辑</a>&nbsp;&nbsp;<a class="btn btn-info design" title="' +full.id + '" type="'+full.formType+'" onclick="javascript:design(this)">设计</a>&nbsp;&nbsp;<a class="btn btn-danger">删除</a>';
+									}else if('UEG' == full.formType){
+										return '<a class="btn btn-primary" id="' +full.id + '"  name="'+full.name+'" code="'+full.code+'" formType="'+full.formType+'" common="'+full.common+'" formId="'+full.formId+'" dirId="'+full.dirId+'" onclick="javascript:editShow(this)">编辑</a>&nbsp;&nbsp;<a class="btn btn-info design" title="' +full.id + '" type="'+full.formType+'" onclick="javascript:design(this)">设计</a>&nbsp;&nbsp;<a class="btn btn-danger">删除</a>';
 									}
 								}
 							}
@@ -239,61 +262,133 @@
 		}
 		$(document).ready(function () {
 			loadDate();
+			loadJJContent();
 			$(".add").click(function(){
+				$("#myModal [name=name]").val('');
+				$("#myModal [name=code]").val('');
+				$("#myModal [name=formType]").val('');
+				$("#myModal [name=common]").val('');
+				$("#myModal .submitCustFrom").attr('data-type','add');
+				$("#myModal .modal-title").html('新增表单');
 				$('#myModal').modal('show');
 			});
 			$(".submitCustFrom").click(function(event){
-				var $name = $("#inputForm [name=name]");
-				var $code = $("#inputForm [name=code]");
-				if('' == $name.val()){
-					$name.parent().find('.invalid-feedback').removeClass('hide');
-					$name.parent().find('.invalid-feedback').css("color",'#bb5454');
-					$name.css("border-color",'#bb5454');
-					return ;
-				}else{
-					$name.parent().find('.invalid-feedback').addClass('hide');
-					$name.css("border-color",'#cccccc');
-				}
-				if('' == $code.val()){
-					$code.parent().find('.invalid-feedback').removeClass('hide');
-					$code.parent().find('.invalid-feedback').css("color",'#bb5454');
-					$code.css("border-color",'#bb5454');
-					return ;
-				}else{
-					$code.parent().find('.invalid-feedback').addClass('hide');
-					$code.css("border-color",'#cccccc');
-				}
-				var inputForm = {
-					code:$("#inputForm [name=code]").val(),
-					name:$("#inputForm [name=name]").val(),
-					formType:$("#inputForm [name=formType]").val(),
-					common:$("#inputForm [name=common]").val()
-				}
-				$.ajax({
-					type: 'POST',
-					dataType:'json',
-					contentType: "application/json;charset=UTF-8",
-					url: configJson.loadZWURL.insertCustomer,
-					data:JSON.stringify(inputForm),
-					success:function(data){
-						if(data){
-							if('A' == data.state.code){
-								$('#myModal').modal('hide');
+					var $name = $("#inputForm [name=name]");
+					var $code = $("#inputForm [name=code]");
+					var $bingdForm = $(".bingdFormsel");
+					if('' == $name.val()){
+						$name.parent().find('.invalid-feedback').removeClass('hide');
+						$name.parent().find('.invalid-feedback').css("color",'#bb5454');
+						$name.css("border-color",'#bb5454');
+						return ;
+					}else{
+						$name.parent().find('.invalid-feedback').addClass('hide');
+						$name.css("border-color",'#cccccc');
+					}
+					if('' == $code.val()){
+						$code.parent().find('.invalid-feedback').removeClass('hide');
+						$code.parent().find('.invalid-feedback').css("color",'#bb5454');
+						$code.css("border-color",'#bb5454');
+						return ;
+					}else{
+						$code.parent().find('.invalid-feedback').addClass('hide');
+						$code.css("border-color",'#cccccc');
+					}
+					var inputForm = {
+						code:$("#inputForm [name=code]").val(),
+						name:$("#inputForm [name=name]").val(),
+						formType:$("#inputForm [name=formType]").val(),
+						common:$("#inputForm [name=common]").val()
+					}
+					if(' '!=$bingdForm.val()){
+						var formId = $bingdForm.val().split('&')[0];
+						var dirId = $bingdForm.val().split('&')[1];
+						inputForm.formId = formId;
+						inputForm.dirId = dirId;
+					}
+				if('add' == $(this).attr('data-type')){
+					$.ajax({
+						type: 'POST',
+						dataType:'json',
+						contentType: "application/json;charset=UTF-8",
+						url: configJson.loadZWURL.insertCustomer,
+						data:JSON.stringify(inputForm),
+						success:function(data){
+							if(data){
+								if('A' == data.state.code){
+									$('#myModal').modal('hide');
+								}else{
+									$("#inputForm .message").removeClass('hide')
+									$("#inputForm .message").html('新增失败');
+								}
 							}else{
 								$("#inputForm .message").removeClass('hide')
 								$("#inputForm .message").html('新增失败');
 							}
-						}else{
-							$("#inputForm .message").removeClass('hide')
-							$("#inputForm .message").html('新增失败');
 						}
-					}
-				});
+					});
+				}else if('edit' == $(this).attr('data-type')){
+						inputForm.id = $(this).attr('data-id');
+						$.ajax({
+							type: 'POST',
+							dataType:'json',
+							contentType: "application/json;charset=UTF-8",
+							url: configJson.loadZWURL.updateCustomer,
+							data:JSON.stringify(inputForm),
+							success:function(data){
+								if(data){
+									if('A' == data.state.code){
+										$('#myModal').modal('hide');
+									}else{
+										$("#inputForm .message").removeClass('hide')
+										$("#inputForm .message").html('修改失败');
+									}
+								}else{
+									$("#inputForm .message").removeClass('hide')
+									$("#inputForm .message").html('修改失败');
+								}
+							}
+					});
+				}
+				
 			});
 		} );
 		$(".nav>li").click(function(e){
 			$(".nav>li").removeClass("active")
 			$(this).addClass("active")
-		})
+		});
+		function loadJJContent(){
+			console.log('loadJJContent loading');
+			$.ajax({
+				type: 'GET',
+				dataType:'json',
+				contentType: "application/x-www-form-urlencoded",
+				url: configJson.loadJJURl.loadForm,
+				success:function(data){
+					var optGroup = '<optgroup  label="默认"><option  value=" ">请选择</option></optgroup>';
+					var option = '';
+					if(data){	
+						console.log(data);
+						for(var i = 0;i<data.length;i++){
+							optGroup+='<optgroup  aria-valuenow="'+data[i].dirId+'" label="'+data[i].dirName+'">';
+							if(data[i].childList.length > 0){
+								for(var j = 0;j<data[i].childList.length;j++){
+									option+='<option value='+data[i].childList[j].formId+'&'+data[i].dirId+'>'+data[i].childList[j].formName+'</option>';
+								}
+								optGroup+=option+'</optgroup>';
+								option = '';
+							}
+						}
+						$(".bingdFormsel").append(optGroup);
+						$(".bingdFormsel").selectpicker("refresh");
+					}
+				},
+			　  complete : function(XMLHttpRequest,status){ //请求完成后最终执行参数
+			　　　　if(status=='timeout'){//超时,status还有success,error等值的情况
+			　　　　　  alert("超时!");
+			　　　　}
+			　　}
+			});
+		}
 	</script>
 </body>
