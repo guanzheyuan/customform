@@ -123,14 +123,17 @@ $(document).ready(function () {
             Json.formId = formId;
             $.ajax({
                 type: 'POST',
-                dataType:'json',
-                contentType: "application/x-www-form-urlencoded",
+                dataType:'JSON',
+                contentType: "application/json;charset=UTF-8",
                 url: configJson.loadJJURl.updateForm,
                 data: JSON.stringify(Json),
                 success:function(data){
                     console.log('data',data);
                 },
-            　complete : function(XMLHttpRequest,status){ //请求完成后最终执行参数
+                beforeSend: function(xhr) {
+                    xhr.seth
+                },
+            　  complete : function(XMLHttpRequest,status){ //请求完成后最终执行参数
             　　　　if(status=='timeout'){//超时,status还有success,error等值的情况
             　　　　　  alert("超时!");
             　　　　}
