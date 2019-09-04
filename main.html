@@ -164,7 +164,7 @@
 			if('UED' == $(obj).attr('type')){
 				url = "./index.html?id=" + $(obj).attr('title')+"&formType="+$(obj).attr('type');
 			}else if('UEG' == $(obj).attr('type')){
-				url = "./index.html?id=" + $(obj).attr('title')+"&formType="+$(obj).attr('type')+"&UEG="+$(obj).attr('formId')+'&'+$(obj).attr('dirId');
+				url = "./index.html?id=" + $(obj).attr('title')+"&formType="+$(obj).attr('type')+"&UEG="+$(obj).attr('formId')+'&'+$(obj).attr('dirId')+'&dirName='+$(obj).attr('dirName');
 			}
 			window.open(url, "_self");
 		}
@@ -225,11 +225,13 @@
 								data: 'formType',
 								render: function (data, type, full, meta) {
 									if ('UP' == full.formType) {
-										return '<a class="btn btn-primary" id="' +full.id + '"  name="'+full.name+'" code="'+full.code+'" formType="'+full.formType+'" common="'+full.common+'" formId="'+full.formId+'" dirId="'+full.dirId+'" onclick="javascript:editShow(this)">编辑</a>&nbsp;&nbsp;<a class="btn " title="' +full.id + '" >设计</a>&nbsp;&nbsp;<a class="btn btn-danger">删除</a>';
+										return '<a class="btn btn-primary" id="' +full.id + '"   name="'+full.name+'" code="'+full.code+'" formType="'+full.formType+'" common="'+full.common+'" formId="'+full.formId+'" dirId="'+full.dirId+'" onclick="javascript:editShow(this)">编辑</a>&nbsp;&nbsp;<a class="btn " dirname="'+full.dirName+'"  title="' +full.id + '" >设计</a>&nbsp;&nbsp;<a class="btn btn-danger">删除</a>';
 									} else if ('UED' == full.formType) {
-										return '<a class="btn btn-primary" id="' +full.id + '"  name="'+full.name+'" code="'+full.code+'" formType="'+full.formType+'" common="'+full.common+'" formId="'+full.formId+'" dirId="'+full.dirId+'" onclick="javascript:editShow(this)">编辑</a>&nbsp;&nbsp;<a class="btn btn-info design" title="' +full.id + '" type="'+full.formType+'" formId="'+full.formId+'" dirId="'+full.dirId+'" onclick="javascript:design(this)">设计</a>&nbsp;&nbsp;<a class="btn btn-danger">删除</a>';
+										return '<a class="btn btn-primary" id="' +full.id + '"  name="'+full.name+'" code="'+full.code+'" formType="'+full.formType+'" common="'+full.common+'" formId="'+full.formId+'" dirId="'+full.dirId+'" onclick="javascript:editShow(this)">编辑</a>&nbsp;&nbsp;<a class="btn btn-info design" dirname="'+full.dirName+'"  title="' +full.id + '" type="'+full.formType+'" formId="'+full.formId+'" dirId="'+full.dirId+'" onclick="javascript:design(this)">设计</a>&nbsp;&nbsp;<a class="btn btn-danger">删除</a>';
 									}else if('UEG' == full.formType){
-										return '<a class="btn btn-primary" id="' +full.id + '"  name="'+full.name+'" code="'+full.code+'" formType="'+full.formType+'" common="'+full.common+'" formId="'+full.formId+'" dirId="'+full.dirId+'" onclick="javascript:editShow(this)">编辑</a>&nbsp;&nbsp;<a class="btn btn-info design" title="' +full.id + '" type="'+full.formType+'" formId="'+full.formId+'" dirId="'+full.dirId+'" onclick="javascript:design(this)">设计</a>&nbsp;&nbsp;<a class="btn btn-danger">删除</a>';
+										return '<a class="btn btn-primary" id="' +full.id + '"  name="'+full.name+'" code="'+full.code+'" formType="'+full.formType+'" common="'+full.common+'" formId="'+full.formId+'" dirId="'+full.dirId+'" onclick="javascript:editShow(this)">编辑</a>&nbsp;&nbsp;<a class="btn btn-info design" dirname="'+full.dirName+'"  title="' +full.id + '" type="'+full.formType+'" formId="'+full.formId+'" dirId="'+full.dirId+'" onclick="javascript:design(this)">设计</a>&nbsp;&nbsp;<a class="btn btn-danger">删除</a>';
+									}else if ('UE' == full.formType) {
+										return '<a class="btn btn-primary" id="' +full.id + '" name="'+full.name+'" code="'+full.code+'" formType="'+full.formType+'" common="'+full.common+'" formId="'+full.formId+'" dirId="'+full.dirId+'" onclick="javascript:editShow(this)">编辑</a>&nbsp;&nbsp;<a class="btn " dirname="'+full.dirName+'"  title="' +full.id + '" >设计</a>&nbsp;&nbsp;<a class="btn btn-danger">删除</a>';
 									}
 								}
 							}
@@ -282,6 +284,7 @@
 					var $name = $("#inputForm [name=name]");
 					var $code = $("#inputForm [name=code]");
 					var $bingdForm = $(".bingdFormsel");
+					var $bingdFormsel = $(".bingdFormsel");
 					if('' == $name.val()){
 						$name.parent().find('.invalid-feedback').removeClass('hide');
 						$name.parent().find('.invalid-feedback').css("color",'#bb5454');
@@ -304,13 +307,16 @@
 						code:$("#inputForm [name=code]").val(),
 						name:$("#inputForm [name=name]").val(),
 						formType:$("#inputForm [name=formType]").val(),
-						common:$("#inputForm [name=common]").val()
+						common:$("#inputForm [name=common]").val(),
+						dirName:''
 					}
 					if(' '!=$bingdForm.val()){
 						var formId = $bingdForm.val().split('&')[0];
 						var dirId = $bingdForm.val().split('&')[1];
+						var formName =  $bingdForm.val().split('&')[2];
 						inputForm.formId = formId;
 						inputForm.dirId = dirId;
+						inputForm.dirName = formName;
 					}
 				if('add' == $(this).attr('data-type')){
 					$.ajax({
@@ -379,7 +385,7 @@
 							optGroup+='<optgroup  aria-valuenow="'+data[i].dirId+'" label="'+data[i].dirName+'">';
 							if(data[i].childList.length > 0){
 								for(var j = 0;j<data[i].childList.length;j++){
-									option+='<option value='+data[i].childList[j].formId+'&'+data[i].dirId+'>'+data[i].childList[j].formName+'</option>';
+									option+='<option value='+data[i].childList[j].formId+'&'+data[i].dirId+'&'+data[i].childList[j].formName+'>'+data[i].childList[j].formName+'</option>';
 								}
 								optGroup+=option+'</optgroup>';
 								option = '';

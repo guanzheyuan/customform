@@ -108,6 +108,7 @@ $(document).ready(function () {
             }
         }else if('UEG' == formType){
             var UEG = GetQueryString('UEG');
+            var dirName = GetQueryString('dirName')
             var content  = $(".demo").html();
             downloadLayoutSrc();
             loadJson();
@@ -121,6 +122,7 @@ $(document).ready(function () {
                 return;
             }
             Json.formId = formId;
+            Json.formName =decodeURI(dirName);
             $.ajax({
                 type: 'POST',
                 dataType:'JSON',
@@ -242,7 +244,7 @@ function GetQueryString(name){
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
     var r = window.location.search.substr(1).match(reg);
     if (r != null) {
-        return unescape(r[2]);
+        return decodeURI(r[2]);
     }
     return null;
 };
