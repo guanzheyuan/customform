@@ -1,4 +1,4 @@
-var $IP ='http://localhost:8081/customer';
+var $IP ='http://10.45.67.193:8580/customer';
 var $JJIP = 'http://10.45.67.181:38080';
 var configJson = {
     loadZWURL:{

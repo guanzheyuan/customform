@@ -55,12 +55,11 @@ body {
 .container { width:auto; margin:0 0px;}
 .sidebar-nav {
 	position:fixed;
-	width:180px;
 	left:0px;
 	bottom:0;
 	top:60px;
-	background:#ccc;
-	padding: 10px; z-index:10;
+	background:white;
+	padding: 10px;
 	-webkit-transition: all 500ms ease;
 	-moz-transition: all 500ms ease;
 	-ms-transition: all 500ms ease;
