@@ -31,10 +31,17 @@
 		<div class="navbar-inner">
 			<div style="margin-left: 20px;">
 				<a class="brand" href="main.html">
-					自定义表单
+					自定义表单设计器
 				</a>
 				<ul class="nav" id="menu-layoutit" style="margin-left:30px;display: inline-block;">
 					<li>
+						<div class="btn-group" data-toggle="buttons-radio">
+							<button class="btn btn-xs btn-primary" style="background-color:#1180eb;border-color:#1180eb" href="./main.html" id="back"
+								onclick="window.open('./main.html','_self')">
+								<i class="glyphicon-backward glyphicon"></i>
+								返回
+							</button>
+						</div>
 						<div class="btn-group" data-toggle="buttons-radio">
 							<button type="button" id="edit" class="active btn btn-xs btn-primary"> <i
 									class="glyphicon glyphicon-edit "></i>
@@ -70,11 +77,7 @@
 								<i class="glyphicon-save glyphicon "></i>
 								保存
 							</button>
-							<button class="btn btn-xs btn-primary" href="./main.html" id="back"
-								onclick="window.open('./main.html','_self')">
-								<i class="glyphicon-backward glyphicon"></i>
-								返回
-							</button>
+							
 						</div>
 					</li>
 				</ul>
@@ -268,14 +271,97 @@
 		</aside>
 	</div>
 	<div class="container">
-		<div class="demo ui-sortable" style="min-height:1048px;">
-			<div class="sidebar-nav-right">
-				<aside class="el-aside" style="width: 275px;">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-						<h4 class="modal-title">编辑【标题栏】</h4>
-					</div>
-				</aside>
+	<div class="demo ui-sortable" >
+	<div class="sidebar-nav-right">
+		<aside class="el-aside" style="width: 275px;">
+			<!-- modify layout-->
+			<div id="editorLayout" class="hide">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h4 class="modal-title">属性【栅格布局】</h4>
+				</div>
+				<div class="">
+					<form id="layoutForm" role="form">
+						<div id="download-logged" class="">
+							<div class="alert alert-info">一共12列，请输入对应的列数，以及对应的比例
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="name">列配置（一行所占列）</label>
+							<select class="form-control layoutCol" name="layoutCol" id="sel1" placeholder="数据类型"
+								style="width:100%;">
+								<option value="1">占1列</option>
+								<option value="2">占2列</option>
+								<option value="3">占3列</option>
+								<option value="4">占4列</option>
+							</select>
+						</div>
+					</form>
+				</div>
+			</div>
+			<!-- modify inputModal-->
+			<div id="editorInputModal_" class="">
+				<div class="modal-header">
+					<h4 class="modal-title">属性【输入框】</h4>
+				</div>
+				<div class="">
+					<form id="inputForm" role="form">
+						<div class="form-group">
+							<label for="name">字段标题</label>
+							<input type="text" name="orgname" autocomplete="off" class="form-control"
+								placeholder="字段标题" style="width: 100%;">
+						</div>
+						<div class="form-group">
+							<label for="name">字段名称</label>
+							<input type="text" name="fieldname" autocomplete="off" class="form-control"
+								placeholder="字段名称" style="width: 100%;">
+						</div>
+						<div class="form-group">
+							<label for="name">默认值</label>
+							<select class="form-control isOrgValue" name="isRequired" id="sel1" placeholder="默认值"
+								style="width:100%;">
+								<option value="A">自定义</option>
+								<option value="B">数据联动</option>
+								<option value="C">编辑功式</option>
+							</select>
+							<input type="text" name="orgvalue" autocomplete="off" class="form-control orgvalue"
+								placeholder="默认值" style="width: 100%;margin-top: 5px;">
+							<button type="button" class="btn btn-default btn-sm hide date_linkage" style="width:100%;margin-top: 5px;">数据联动设置</button><br>
+							<button type="button" class="btn btn-default btn-sm hide date_formula" style="width:100%;margin-top: -16px;">fx 编辑公式</button>
+						</div>
+						<div class="form-group">
+							<label for="name">是否必填</label>
+							<select class="form-control isRequired" name="isRequired" id="sel1" placeholder="是否必填"
+								style="width:100%;">
+								<option value="N">否</option>
+								<option value="Y">是</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="name">数据类型</label>
+							<select class="form-control orgtype" name="orgtype" id="sel1" placeholder="数据类型"
+								style="width:100%;">
+								<option value="text">普通文本</option>
+								<option value="/^[A-Za-zd]+([-_.][A-Za-zd]+)*@([A-Za-zd]+[-.])+[A-Za-zd]{2,4}$/">
+									邮箱地址</option>
+								<option value="/^([1-9]d*|[0]{1,1})$/">正整数</option>
+								<option value="/^[1][3,4,5,7,8][0-9]{9}$/">手机号</option>
+								<option value="/(^d{15}$)|(^d{18}$)|(^d{17}(d|X|x)$)/">身份证号码</option>
+								<option value="other">其他</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="name">占位内容</label>
+							<input type="text" name="placeholder" autocomplete="off" class="form-control placeholder"
+								placeholder="占位内容" style="width: 100%;">
+						</div>
+						<div class="form-group">
+							<label for="name">标签宽度</label>
+							<input type="number" class="form-control layoutCol" autocomplete="off" name="layoutCol"
+								value="100" min="0" max="300" step="1" style="width:100%" />
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 		<div id="download-layout">
