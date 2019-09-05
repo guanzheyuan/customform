@@ -52,12 +52,12 @@ body {
 	position: absolute;
 	top: -1px;
 }
-.container { width:1060px; margin:11px 55px;float: left;}
+.container { width:1060px; margin:-22px 55px;float: left;}
 .sidebar-nav-right{
 	position:fixed;
-	left:1302px;
+	left:1298px;
 	bottom:0;
-	top:82px;
+	top:48px;
 	background:white;
 	padding: 10px;
 	border:1px solid #e0dddd;
@@ -71,7 +71,7 @@ body {
 	position:fixed;
 	left:0px;
 	bottom:0;
-	top:53px;
+	top:36px;
 	background:white;
 	padding: 10px;
 	-webkit-transition: all 500ms ease;
