@@ -254,7 +254,7 @@ a.language-selected { font-style: italic; font-weight: bold; }
 	font-weight: bold;
 	font-size: 20px;
 	margin-left: 20px;
-	font-weight: 400;
+	font-weight: 600;
 	opacity: .8;
 	font-family: Avenir,Helvetica,Arial,sans-serif;
 		-webkit-font-smoothing: antialiased;
@@ -262,8 +262,9 @@ a.language-selected { font-style: italic; font-weight: bold; }
 		border: none;
 }
 .navbar .brand .logo{
-	width: 30px;
 	height: 30px;
+	margin-right: 15px;
+	vertical-align: middle;
 }
 .navbar .nav>li>a {
     padding: 20px 15px;
