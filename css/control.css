@@ -671,6 +671,9 @@ html {
     margin: 1%;
     color: #333;
     border: 1px solid #f4f6fc;
+    height: 30px;
+    cursor: move;
+    background: #f4f6fc;
 }
 
 .components-list .form-edit-widget-label:hover {
