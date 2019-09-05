@@ -10,6 +10,7 @@
 	<meta name="description" content="LayoutIt! 可拖放排序在线编辑的Bootstrap可视化布局系统">
 	<link href="./css/bootstrap.min.css" rel="stylesheet">
 	<link href="./css/layoutit.css" rel="stylesheet">
+	<link href="./css/control.css" rel="stylesheet">
 	<!--[if lt IE 9]>
 	<script src="js/html5shiv.js"></script>
 	<![endif]-->
@@ -90,278 +91,65 @@
 			</div>
 		</div><!-- /navbar-inner -->
 	</div>
-	<div class="container">
-		<div class="row">
-			<div class="">
-				<div class="sidebar-nav">
-					<ul class="nav nav-list accordion-group">
-						<li class="nav-header">
-							<div class="pull-right popover-info">
-								<i class="glyphicon glyphicon-question-sign"></i>
-								<div class="popover fade right">
-									<div class="arrow"></div>
-									<h3 class="popover-title">帮助</h3>
-									<div class="popover-content">
-										在这里设置你的栅格布局, 栅格总数默认为12, 用空格分割每列的栅格值
-									</div>
-								</div>
-							</div>
-							<i class="glyphicon-plus glyphicon"></i>
-							布局
-						</li>
-						<li class="rows" id="estRows">
-							<div class="lyrow ui-draggable grid-layout">
-								<a href="javascript:void(0);" class="remove label label-danger">
-									<i class="glyphicon-remove glyphicon"></i>
-									删除
-								</a>
-								<span class="drag label label-default">
-									<i class="glyphicon glyphicon-move"></i>
-									拖动
-								</span>
-								<span class="configuration">
-									<button type="button" class="btn btn-default btn-xs" data-target="#editorLayout"
-										role="button" data-toggle="modal">编辑</button>
-								</span>
-								<div class="preview">栅格布局</div>
-								<div class="view">
-									<div class="row clearfix">
-										<div class="col-md-12 column"></div>
-									</div>
-								</div>
-							</div>
-							<div class="lyrow ui-draggable table-layout">
-								<a href="javascript:void(0);" class="remove label label-danger">
-									<i class="glyphicon-remove glyphicon"></i>
-									删除
-								</a>
-								<span class="drag label label-default table-drag">
-									<i class="glyphicon glyphicon-move"></i>
-									拖动
-								</span>
-								<div class="preview">表格布局</div>
-								<div class="view">
-									<div class="row clearfix">
-										<div class="col-md-12" style="padding:10px;">
-											<textarea id="formEditor" type="text/plain"></textarea>
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
-					</ul>
-					<ul class="nav nav-list accordion-group">
-						<li class="nav-header">
-							<i class="glyphicon glyphicon-plus"></i>
-							基本组件
-							<div class="pull-right popover-info">
-								<i class="glyphicon glyphicon-question-sign "></i>
-								<div class="popover fade right">
-									<div class="arrow"></div>
-									<h3 class="popover-title">帮助</h3>
-									<div class="popover-content">
-										将组件元素拖放入你需要放入的栅格列中
-									</div>
-								</div>
-							</div>
-						</li>
-						<li class="boxes" id="elmBase">
-							<div class="box box-element ui-draggable">
-								<a href="javascript:void(0);" class="remove label label-danger">
-									<i class="glyphicon glyphicon-remove"></i>
-									删除
-								</a>
-								<span class="drag label label-default UEditorclick">
-									<i class="glyphicon glyphicon-move"></i>
-									拖动/单击
-								</span>
-								<span class="configuration">
-									<span class="btn-group btn-group-xs">
-										<button type="button" class="btn btn-default btn-xs " data-target="#editorTitle"
-											role="button" data-toggle="modal">
-											<i class="glyphicon glyphicon-edit "></i>
-											编辑
-										</button>
-									</span>
-									<span class="btn-group btn-group-xs" style="margin-right:-25px;">
-										<a class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-											href="javascript:void(0);">
-											对齐
-											<span class="caret"></span>
-										</a>
-										<ul class="dropdown-menu">
-											<li class="active">
-												<a href="javascript:void(0);" rel="">默认</a>
-											</li>
-											<li class="">
-												<a href="javascript:void(0);" rel="text-left">靠左</a>
-											</li>
-											<li class="">
-												<a href="javascript:void(0);" rel="text-center">居中</a>
-											</li>
-											<li class="">
-												<a href="javascript:void(0);" rel="text-right">靠右</a>
-											</li>
-										</ul>
-									</span>
-								</span>
-								<div class="preview">标题栏</div>
-								<div class="view">
-									<p>
-										<label type='label' class="labelEdit" contenteditable="true">标题</label>
-									</p>
-								</div>
-							</div>
-							<div class="box box-element ui-draggable">
-								<a href="javascript:void(0);" class="remove label label-danger">
-									<i class="glyphicon glyphicon-remove"></i>
-									删除
-								</a>
-								<span class="drag label label-default UEditorclick">
-									<i class="glyphicon glyphicon-move"></i>
-									拖动/单击
-								</span>
-								<span class="configuration">
-									<span class="btn-group btn-group-xs">
-										<button type="button" class="btn btn-default btn-xs" style="margin-right:10px;"
-											data-target="#editorInputModal" role="button"
-											data-toggle="modal">编辑</button>
-									</span>
-								</span>
-								<div class="preview">输入框</div>
-								<div class="view">
-									<div class="form-inline ">
-										<input type="text" plugins="text" orgwidth="" orgheight="" orgname=" "
-											orgtype="text" class="form-control default getdom">
-									</div>
-								</div>
-							</div>
-							<div class="box box-element ui-draggable">
-								<a href="javascript:void(0);" class="remove label label-danger">
-									<i class="glyphicon glyphicon-remove"></i>
-									删除
-								</a>
-								<span class="drag label label-default UEditorclick">
-									<i class="glyphicon glyphicon-move"></i>
-									拖动/单击
-								</span>
-								<span class="configuration">
-									<span class="btn-group btn-group-xs">
-										<button type="button" class="btn btn-default btn-xs" style="margin-right:10px;"
-											data-target="#editorSelectModal" role="button"
-											data-toggle="modal">编辑</button>
-									</span>
-								</span>
-								<div class="preview">下拉框</div>
-								<div class="view">
-									<div class="form-inline ">
-										<select class="form-control getdom" id="" type="select" orgwidth="" orgheight=""
-											orgname=" " style="width:100%;">
-										</select>
-									</div>
-								</div>
-							</div>
-							<div class="box box-element ui-draggable">
-								<a href="javascript:void(0);" class="remove label label-danger">
-									<i class="glyphicon glyphicon-remove"></i>
-									删除
-								</a>
-								<span class="drag label label-default UEditorclick">
-									<i class="glyphicon glyphicon-move"></i>
-									拖动/单击
-								</span>
-								<span class="configuration">
-									<span class="btn-group btn-group-xs">
-										<button type="button" class="btn btn-default btn-xs" style="margin-right:10px;"
-											data-target="#editorTextareaModal" role="button"
-											data-toggle="modal">编辑</button>
-									</span>
-								</span>
-								<div class="preview">文本框</div>
-								<div class="view">
-									<div class="form-inline ">
-										<textarea name="" id="" type="textarea" plugins="textarea" title="" fieldname=""
-											orgwidth="" orgheight="" orgfontsize="" isrequired="" class="form-control getdom"
-											seq="" columns="" ifreturn="N" style="width:100%; height:50px;"></textarea>
-									</div>
-								</div>
-							</div>
-							<div class="box box-element ui-draggable">
-								<a href="javascript:void(0);" class="remove label label-danger">
-									<i class="glyphicon glyphicon-remove"></i>
-									删除
-								</a>
-								<span class="drag label label-default UEditorclick">
-									<i class="glyphicon glyphicon-move"></i>
-									拖动/单击
-								</span>
-								<span class="configuration">
-									<span class="btn-group btn-group-xs">
-										<button type="button" class="btn btn-default btn-xs" style="margin-right:10px;"
-											data-target="#editorRadioModal" role="button"
-											data-toggle="modal">编辑</button>
-									</span>
-								</span>
-								<div class="preview">单选</div>
-								<div class="view">
-									<div class="form-inline">
-										<input type="radio" class="getdom" style="vertical-align: initial;">
-										<label class="radioLabelEdit" class="form-control" for="name"></label>
-									</div>
-								</div>
-							</div>
-							<div class="box box-element ui-draggable">
-								<a href="javascript:void(0);" class="remove label label-danger">
-									<i class="glyphicon glyphicon-remove"></i>
-									删除
-								</a>
-								<span class="drag label label-default UEditorclick">
-									<i class="glyphicon glyphicon-move"></i>
-									拖动/单击
-								</span>
-								<span class="configuration">
-									<span class="btn-group btn-group-xs">
-										<button type="button" class="btn btn-default btn-xs" style="margin-right:10px;"
-											data-target="#editorCheckboxModal" role="button"
-											data-toggle="modal">编辑</button>
-									</span>
-								</span>
-								<div class="preview">多选</div>
-								<div class="view">
-									<div class="form-inline">
-										<input type="checkbox" class="getdom" style="vertical-align: initial;">
-										<label class="radioLabelEdit" class="form-control" for="name"></label>
-									</div>
-								</div>
-							</div>
-							<div class="box box-element ui-draggable">
-								<a href="javascript:void(0);" class="remove label label-danger">
-									<i class="glyphicon glyphicon-remove"></i>
-									删除
-								</a>
-								<span class="drag label label-default UEditorclick">
-									<i class="glyphicon glyphicon-move"></i>
-									拖动/单击
-								</span>
-								<span class="configuration">
-									<span class="btn-group btn-group-xs">
-										<button type="button" class="btn btn-default btn-xs" style="margin-right:10px;"
-											data-target="#editorDateTimeModal" role="button"
-											data-toggle="modal">编辑</button>
-									</span>
-								</span>
-								<div class="preview">时间</div>
-								<div class="view">
-									<div class="form-inline">
-										<input type="date" class="form-control getdom"
-											style="vertical-align: initial; width:100%;">
-									</div>
-								</div>
-							</div>
-					</li>
+	<!-- 左侧控件 -->
+	<div class="sidebar-nav">
+		<aside class="el-aside" style="width: 250px;">
+			<div class="components-list">
+				<div class="widget-cate">基础字段</div>
+				<ul>
+					<li class="form-edit-widget-label"><a><i
+								class="icon iconfont icon-input"></i><span>单行文本</span></a></li>
+					<li class="form-edit-widget-label"><a><i
+								class="icon iconfont icon-diy-com-textarea"></i><span>多行文本</span></a></li>
+					<li class="form-edit-widget-label"><a><i
+								class="icon iconfont icon-number"></i><span>计数器</span></a></li>
+					<li class="form-edit-widget-label"><a><i
+								class="icon iconfont icon-radio-active"></i><span>单选框组</span></a></li>
+					<li class="form-edit-widget-label"><a><i
+								class="icon iconfont icon-check-box"></i><span>多选框组</span></a></li>
+					<li class="form-edit-widget-label"><a><i
+								class="icon iconfont icon-time"></i><span>时间选择器</span></a></li>
+					<li class="form-edit-widget-label"><a><i
+								class="icon iconfont icon-date"></i><span>日期选择器</span></a></li>
+					<li class="form-edit-widget-label" draggable="false" style=""><a draggable="false"><i
+								class="icon iconfont icon-icon-test"></i><span>评分</span></a></li>
+					<li class="form-edit-widget-label"><a><i
+								class="icon iconfont icon-color"></i><span>颜色选择器</span></a></li>
+					<li class="form-edit-widget-label"><a><i
+								class="icon iconfont icon-select"></i><span>下拉选择框</span></a></li>
+					<li class="form-edit-widget-label"><a><i
+								class="icon iconfont icon-switch"></i><span>开关</span></a></li>
+					<li class="form-edit-widget-label"><a><i
+								class="icon iconfont icon-slider"></i><span>滑块</span></a></li>
+					<li class="form-edit-widget-label"><a><i
+								class="icon iconfont icon-wenzishezhi-"></i><span>文字</span></a></li>
+					<li class="form-edit-widget-label no-put"><a><i
+								class="icon iconfont icon-fengexian"></i><span>分割线</span></a></li>
 				</ul>
-		</div>
+				<div class="widget-cate">高级字段</div>
+				<ul>
+					<li class="form-edit-widget-label"><a><i
+								class="icon iconfont icon-ic"></i><span>自定义区域</span></a></li>
+					<li class="form-edit-widget-label"><a><i
+								class="icon iconfont icon-wenjianshangchuan"></i><span>文件</span></a></li>
+					<li class="form-edit-widget-label"><a><i
+								class="icon iconfont icon-tupian"></i><span>图片</span></a></li>
+					<li class="form-edit-widget-label"><a><i
+								class="icon iconfont icon-fuwenbenkuang"></i><span>编辑器</span></a></li>
+					<li class="form-edit-widget-label"><a><i
+								class="icon iconfont icon-jilianxuanze"></i><span>级联选择器</span></a></li>
+					<li class="form-edit-widget-label no-put"><a><i
+								class="icon iconfont icon-table"></i><span>子表单</span></a></li>
+				</ul>
+				<div class="widget-cate">布局字段</div>
+				<ul>
+					<li class="form-edit-widget-label no-put"><a><i
+								class="icon iconfont icon-grid-"></i><span>栅格布局</span></a></li>
+				</ul>
+			</div>
+		</aside>
 	</div>
+	<div class="container">
 	<div class="demo ui-sortable" style="min-height: 728px;">
 		
 	</div>
