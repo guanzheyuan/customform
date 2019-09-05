@@ -197,6 +197,7 @@
 				success: function (data) {
 					$('.datatable-1').dataTable({
 						"data": data,
+						"lengthChange":false,
 						"bStateSave": true, //狀態保存
 						"aoColumnDefs": [{
 								"orderable": false,
