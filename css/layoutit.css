@@ -104,7 +104,9 @@ body {
 .sidebar-nav .boxes { display:none;}
 
 .demo .preview { display: none; }
-.demo .box .view { display: block; padding-top:30px;}
+.demo .box .view { display: block; padding-bottom:30px;    position: relative;
+    border: 1px dashed hsla(0,0%,66.7%,.5);
+    background-color: rgba(236,245,255,.3);}
 
 
 .ui-draggable-dragging .view { display:block;}
@@ -124,7 +126,7 @@ body {
 .demo .column .navbar-fixed-top {top: 33px;}
 .edit .demo .column .navbar-fixed-bottom { left: 180px;}
 
-.edit .demo .remove { position: absolute; top: 5px; right: -10px; z-index:10; }
+.edit .demo .remove { position: absolute; bottom: -5px; right: -10px; z-index:10; }
 .demo .configuration {
 	filter: alpha(opacity=0);
 	opacity: 0;
@@ -288,4 +290,23 @@ a.language-selected { font-style: italic; font-weight: bold; }
 #menu-layoutit{
 	margin-right: 30px;
 	float: right;
+}
+.borderActive{
+	outline: 2px solid #409eff;
+    border: 1px solid #409eff;
+}
+.widget-view-action{
+	position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 28px;
+    line-height: 28px;
+    background: #409eff;
+    z-index: 9;
+}
+.icon-trash {
+    font-size: 14px;
+    color: #fff;
+    margin: 0 5px;
+    cursor: pointer;
 }
