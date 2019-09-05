@@ -291,9 +291,19 @@ a.language-selected { font-style: italic; font-weight: bold; }
 	margin-right: 30px;
 	float: right;
 }
+.borderNoActive{
+	padding-bottom: 18px;
+    position: relative;
+    border: 1px dashed hsla(0,0%,66.7%,.5);
+    background-color: rgba(236,245,255,.3);
+    margin: 2px;
+    overflow: hidden;
+}
 .borderActive{
-	outline: 2px solid #409eff;
-    border: 1px solid #409eff;
+	padding-bottom: 18px !important;
+	background-color: rgba(236,245,255,.3) !important;
+	outline: 2px solid #409eff !important;
+    border: 1px solid #409eff !important;
 }
 .widget-view-action{
 	position: absolute;
@@ -310,3 +320,4 @@ a.language-selected { font-style: italic; font-weight: bold; }
     margin: 0 5px;
     cursor: pointer;
 }
+/* borderActive */
