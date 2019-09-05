@@ -101,7 +101,6 @@
 				<ul>
 					<li class="rows form-edit-widget-label" id="estRows">
 						<div class="lyrow ui-draggable grid-layout addElement" onclick="clickFix(this)" >
-							
 							<span class="drag" style="width:100%;height:100%;">
 								<i class="glyphicon glyphicon-move" style="opacity: 0;"></i>
 							</span>
@@ -210,7 +209,7 @@
 						</div>
 					</li>
 					<li class="rows form-edit-widget-label">
-						<div class="box box-element ui-draggable">
+						<div class="box box-element ui-draggable addElement" onclick="clickFix(this)">
 							<span class="drag UEditorclick" style="width:100%;height:100%;">
 								<i class="glyphicon glyphicon-move" style="opacity: 0;"></i>
 							</span>
@@ -220,8 +219,11 @@
 							</div>
 							<div class="view borderNoActive">
 								<div class="form-inline">
-									<input type="radio" class="getdom" style="vertical-align: initial;">
-									<label class="radioLabelEdit" class="form-control" for="name"></label>
+									<label for=""></label><br>
+									&nbsp;
+									<div class="radioDom" style="margin-top:-20px;">
+											<input type="radio" class="getdom">
+									</div>
 								</div>
 								<div class="widget-view-action remove2 hide">
 										<i class="iconfont icon-trash"></i>
@@ -230,7 +232,7 @@
 						</div>
 					</li>
 					<li class="rows form-edit-widget-label">
-						<div class="box box-element ui-draggable">
+						<div class="box box-element ui-draggable addElement" onclick="clickFix(this)">
 							<span class="drag UEditorclick" style="width:100%;height:100%;">
 								<i class="glyphicon glyphicon-move" style="opacity: 0;"></i>
 							</span>
@@ -240,8 +242,11 @@
 							</div>
 							<div class="view borderNoActive">
 								<div class="form-inline">
-									<input type="checkbox"  class="getdom" style="vertical-align: initial;">
-									<label class="radioLabelEdit" class="form-control" for="name"></label>
+									<label for=""></label><br>
+									&nbsp;
+									<div class="radioDom" style="margin-top:-20px;">
+											<input type="checkbox"  class="getdom" style="vertical-align: initial;">
+									</div>
 								</div>
 								<div class="widget-view-action remove2 hide">
 										<i class="iconfont icon-trash"></i>
@@ -250,7 +255,7 @@
 						</div>
 					</li>
 					<li class="rows form-edit-widget-label">
-						<div class="box box-element ui-draggable">
+						<div class="box box-element ui-draggable addElement" onclick="clickFix(this)">
 							<span class="drag UEditorclick" style="width:100%;height:100%;">
 								<i class="glyphicon glyphicon-move" style="opacity: 0;"></i>
 							</span>
@@ -260,6 +265,7 @@
 							</div>
 							<div class="view borderNoActive">
 								<div class="form-inline">
+									<label for=""></label>
 									<input type="date" class="form-control getdom"
 										style="vertical-align: initial; width:100%;">
 								</div>
@@ -436,6 +442,130 @@
 							</div>
 					</form>
 				</div>
+			</div>
+			<!-- modify radioModal-->
+			<div id="editorRadioModal_" class="hide">
+				<div class="modal-header">
+					<h4 class="modal-title">属性【单选按钮】</h4>
+				</div>
+				<div class="">
+						<form id="selectForm" role="form">
+								<div class="form-group">
+									<label for="name">字段标题</label>
+									 <input type="text" name="orgname" autocomplete="off" class="form-control orgname" placeholder="字段标题" style="width:100%;"> 
+								</div>
+								<div class="form-group">
+									<label for="name">字段名称</label>
+									<input type="text" name="fieldname" autocomplete="off" class="form-control fieldname"
+										placeholder="字段名称" style="width: 100%;">
+								</div>
+								<div class="form-group">
+									<label for="name">是否必填</label>
+									<select class="form-control isRequired" name="isRequired" id="sel1" placeholder="是否必填"
+										style="width:100%;">
+										<option value="N">否</option>
+										<option value="Y">是</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="name">选项</label>
+									<select class="form-control isOrgValue" name="isOrgValue" id="sel1" placeholder="默认值"
+										style="width:100%;">
+										<option value="A">自定义</option>
+										<option value="B">关联其他表单数据</option>
+										<option value="C">数据联动</option>
+									</select>
+									&nbsp;
+									<div class="form-group addRadioOption" style="width:100%;">
+										
+									</div>
+									<div class="form-group">
+											<button type="button" class="btn btn-link addOption " >添加选项</button>
+									</div>
+								</div>
+							</form>
+					</div>
+			</div>
+			<!-- modify checkBoxModal-->
+			<div id="editorCheckBoxModal_" class="hide">
+					<div class="modal-header">
+						<h4 class="modal-title">属性【选按钮】</h4>
+					</div>
+					<div class="">
+							<form id="selectForm" role="form">
+									<div class="form-group">
+										<label for="name">字段标题</label>
+										 <input type="text" name="orgname" autocomplete="off" class="form-control orgname" placeholder="字段标题" style="width:100%;"> 
+									</div>
+									<div class="form-group">
+										<label for="name">字段名称</label>
+										<input type="text" name="fieldname" autocomplete="off" class="form-control fieldname"
+											placeholder="字段名称" style="width: 100%;">
+									</div>
+									<div class="form-group">
+										<label for="name">是否必填</label>
+										<select class="form-control isRequired" name="isRequired" id="sel1" placeholder="是否必填"
+											style="width:100%;">
+											<option value="N">否</option>
+											<option value="Y">是</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label for="name">选项</label>
+										<select class="form-control isOrgValue" name="isOrgValue" id="sel1" placeholder="默认值"
+											style="width:100%;">
+											<option value="A">自定义</option>
+											<option value="B">关联其他表单数据</option>
+											<option value="C">数据联动</option>
+										</select>
+										&nbsp;
+										<div class="form-group addCheckboxOption" style="width:100%;">
+											
+										</div>
+										<div class="form-group">
+												<button type="button" class="btn btn-link addOption " >添加选项</button>
+										</div>
+									</div>
+								</form>
+						</div>
+			</div>
+			<!--modify dateTime-->
+			<div id="editorDateTimeModal_" class="hide">
+					<div class="modal-header">
+						<h4 class="modal-title">属性【时间框】</h4>
+					</div>
+					<div class="">
+							<form id="dateTimeForm" role="form">
+								<div class="form-group">
+									<label for="name">字段标题</label>
+									<input type="text" name="orgname" autocomplete="off" class="form-control orgname" placeholder="字段标题"
+										style="width: 100%;">
+								</div>
+								<div class="form-group">
+									<label for="name">字段名称</label>
+									<input type="text" name="fieldname" autocomplete="off" class="form-control fieldname"
+										placeholder="字段名称" style="width: 100%;">
+								</div>
+								<div class="form-group">
+									<label for="name">是否必填</label>
+									<select class="form-control isRequired" name="isRequired" id="sel1" placeholder="是否必填"
+										style="width:100%;">
+										<option value="N">否</option>
+										<option value="Y">是</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="name">时间类型</label>
+									<select class="form-control type" name="type" placeholder="时间类型" style="width: 100%;">
+										<option value="date">年月日</option>
+										<option value="time">上午/下午|时分</option>
+										<option value="datetime-local">年月日|上午/下午</option>
+										<option value="month">年月</option>
+										<option value="week">年周</option>
+									</select>
+								</div>
+							</form>
+						</div>
 			</div>
 		</div>
 		<div id="download-layout">
