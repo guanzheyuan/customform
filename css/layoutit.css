@@ -52,7 +52,21 @@ body {
 	position: absolute;
 	top: -1px;
 }
-.container { width:auto; margin:0 0px;}
+.container { width:1060px; margin:11px 55px;float: left;}
+.sidebar-nav-right{
+	position:fixed;
+	left:1302px;
+	bottom:0;
+	top:82px;
+	background:white;
+	padding: 10px;
+	border:1px solid #e0dddd;
+	border-radius:4px;
+	-webkit-transition: all 500ms ease;
+	-moz-transition: all 500ms ease;
+	-ms-transition: all 500ms ease;
+	-o-transition: all 500ms ease;
+}
 .sidebar-nav {
 	position:fixed;
 	left:0px;
