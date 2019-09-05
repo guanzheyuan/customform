@@ -213,6 +213,11 @@ body [class^="icon-"], body [class*=" icon-"] {
 	font-family: Avenir,Helvetica,Arial,sans-serif;
     -webkit-font-smoothing: antialiased;
 }
+.navbar .brand .logo{
+	height: 30px;
+	margin-right: 15px;
+	vertical-align: middle;
+}
 .navbar .nav>li>a {
 	padding: 15px 15px;
 	font-weight: bold;
@@ -1124,7 +1129,7 @@ border-top-left-radius: 3px;
 	padding: 0
 }
 .stream.new-update a, .stream.load-more a {
-	background: #background: #f7f7f7;;
+	background: #f7f7f7;
 	
 	color: #555;
 	font-weight: 600;
