@@ -178,6 +178,7 @@
 							</div>
 							<div class="view">
 								<div class="form-inline ">
+									<label for=""></label>
 									<select class="form-control getdom" id="" type="select" orgwidth="" orgheight=""
 										orgname=" " style="width:100%;">
 									</select>
@@ -362,6 +363,57 @@
 								value="0" min="0" max="900" step="1" style="width:100%" />
 						</div>
 					</form>
+				</div>
+			</div>
+			<!-- modify selectModal-->
+			<div id="editorSelectModal_" class="hide">
+				<div class="modal-header">
+					<h4 class="modal-title">属性【下拉框】</h4>
+				</div>
+				<div class="">
+					<form id="selectForm" role="form">
+							<div class="form-group">
+								<label for="name">字段标题</label>
+								 <input type="text" name="orgname" autocomplete="off" class="form-control orgname" placeholder="字段标题" style="width:100%;"> 
+							</div>
+							<div class="form-group">
+								<label for="name">字段名称</label>
+								<input type="text" name="fieldname" autocomplete="off" class="form-control fieldname"
+									placeholder="字段名称" style="width: 100%;">
+							</div>
+							<div class="form-group">
+								<label for="name">是否必填</label>
+								<select class="form-control isRequired" name="isRequired" id="sel1" placeholder="是否必填"
+									style="width:100%;">
+									<option value="N">否</option>
+									<option value="Y">是</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<table class="table">
+									<thead>
+										<tr>
+											<th>值名</th>
+											<th>值</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+								<button type="button" class="btn btn-default btn-sm addTR">
+									添加
+								</button>
+							</div>
+							<div id="download-logged " class="topinfo hide">
+								<div class="alert alert-warning">
+									<a href="#" class="close" data-dismiss="alert">
+										&times;
+									</a>
+									<strong>警告！</strong><span class="info"></span>
+								</div>
+							</div>
+						</form>
 				</div>
 			</div>
 		</div>
