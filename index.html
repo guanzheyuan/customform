@@ -24,9 +24,7 @@
 	<script src="./ueditor/ueditor.all.js"></script>
 	<script src="./js/config.js"></script>
 	<script src="./js/data.js"></script>
-	<script src="./js/editElement.js"></script>
 </head>
-
 <body class="edit" style="min-height: 798px;">
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
@@ -158,8 +156,9 @@
 							</div>
 							<div class="view">
 								<div class="form-inline ">
+									<label for=""></label>
 									<input type="text" plugins="text" orgwidth="" orgheight="" orgname=" "
-										orgtype="text" class="form-control default getdom">
+										orgtype="text" class="form-control default getdom" style="width:100%;">
 								</div>
 							</div>
 						</div>
@@ -359,7 +358,7 @@
 						<div class="form-group">
 							<label for="name">标签宽度</label>
 							<input type="number" class="form-control layoutCol" autocomplete="off" name="layoutCol"
-								value="100" min="0" max="300" step="1" style="width:100%" />
+								value="0" min="0" max="900" step="1" style="width:100%" />
 						</div>
 					</form>
 				</div>
