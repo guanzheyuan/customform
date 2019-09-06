@@ -52,10 +52,10 @@ body {
 	position: absolute;
 	top: -1px;
 }
-.container { width:1060px; margin:-22px 55px;float: left;}
+.container { width:76%; margin:-22px 55px;float: left;}
 .sidebar-nav-right{
 	position:fixed;
-	left:1298px;
+	left:81.6%;
 	bottom:0;
 	top:48px;
 	background:white;
