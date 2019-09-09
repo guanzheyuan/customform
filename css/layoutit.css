@@ -67,6 +67,9 @@ body {
 	-ms-transition: all 500ms ease;
 	-o-transition: all 500ms ease;
 }
+.body-right{
+	padding-right:10px;
+}
 .sidebar-nav {
 	position:fixed;
 	left:0px;
