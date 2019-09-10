@@ -107,7 +107,7 @@ body {
 .sidebar-nav .boxes { display:none;}
 
 .demo .preview { display: none; }
-.demo .box .view { display: block; padding-bottom:30px;    position: relative;
+.demo .box .view { display: block;  position: relative;
     border: 1px dashed hsla(0,0%,66.7%,.5);
     background-color: rgba(236,245,255,.3);}
 
