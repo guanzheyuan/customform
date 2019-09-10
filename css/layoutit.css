@@ -109,7 +109,8 @@ body {
 .demo .preview { display: none; }
 .demo .box .view { display: block;  position: relative;
     border: 1px dashed hsla(0,0%,66.7%,.5);
-    background-color: rgba(236,245,255,.3);}
+		background-color: rgba(236,245,255,.3);
+	}
 
 
 .ui-draggable-dragging .view { display:block;}
@@ -203,6 +204,7 @@ body {
 	margin: 5px 0;
 	padding: 10px 19px 10px;
 	position: relative;
+	min-height: 40px;
 }
 
 /* preview */
