@@ -561,6 +561,11 @@ html {
     margin-top: 8px
 }
 
+.radioDom label,.checkDom label{
+    margin-right: 15px;
+    margin-left: 5px;
+}
+
 *,
 :after,
 :before {

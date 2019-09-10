@@ -200,8 +200,8 @@ body {
 	background-color: #FFFFFF;
 	border: 1px solid #DDDDDD;
 	border-radius: 4px 4px 4px 4px;
-	margin: 15px 0;
-	padding: 39px 19px 24px;
+	margin: 5px 0;
+	padding: 10px 19px 10px;
 	position: relative;
 }
 
@@ -295,7 +295,7 @@ a.language-selected { font-style: italic; font-weight: bold; }
 	float: right;
 }
 .borderNoActive{
-	padding-bottom: 18px;
+	padding-bottom: 10px;
     position: relative;
     border: 1px dashed hsla(0,0%,66.7%,.5);
     background-color: rgba(236,245,255,.3);
@@ -303,7 +303,7 @@ a.language-selected { font-style: italic; font-weight: bold; }
     overflow: hidden;
 }
 .borderActive{
-	padding-bottom: 18px !important;
+	padding-bottom: 10px !important;
 	background-color: rgba(236,245,255,.3) !important;
 	outline: 2px solid #409eff !important;
     border: 1px solid #409eff !important;
