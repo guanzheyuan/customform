@@ -1,6 +1,15 @@
 var formEditorid = '';
+/**
+ * 初始化 - 开始
+ */
 $(document).ready(function () {
+    /**
+     * 加载数据内容（栅格/UED）
+     */
     loadContent();
+    /**
+     * 初始化 保存事件
+     */
     $(".saveFrom").click(function(){
         var inParam = {
             customerformId: GetQueryString('id'),
@@ -8,6 +17,7 @@ $(document).ready(function () {
             content: '',
             objList: []
         }
+        //校验保存表单类型
         var formType = GetQueryString('formType');
         if('UED' == formType){
             if('' != formEditorid){
@@ -58,7 +68,6 @@ $(document).ready(function () {
                 }
                 var selectDom = $content.querySelectorAll('select');
                 if(selectDom.length > 0){
-                    
                 }
                 var textareaDom = $content.querySelectorAll('textarea');
                 if(textareaDom.length > 0){
@@ -79,29 +88,8 @@ $(document).ready(function () {
                         this.componentsList.push(textareaComponent);
                     }
                 }
+                //组装
                 inParam.objList = this.componentsList;
-                // $.ajax({
-                //     type: 'POST',
-                //     dataType:'json',
-                //     contentType: "application/json;charset=UTF-8",
-                //     url: configJson.loadZWURL.saveCustomer,
-                //     data: JSON.stringify(inParam),
-                //     success:function(data){
-                //         console.log('data',data);
-                //         if(data){
-                //             if('A' == data.state.code){
-                //                 alert('保存成功');
-                //             }
-                //         }else{
-                //             alert('保存失败！');
-                //         }
-                //     },
-                // 　complete : function(XMLHttpRequest,status){ //请求完成后最终执行参数
-                // 　　　　if(status=='timeout'){//超时,status还有success,error等值的情况
-                // 　　　　　  alert("超时!");
-                // 　　　　}
-                // 　　}
-                // });
             }else{
                 alert("请选择编辑表单");
                 return;
@@ -142,6 +130,7 @@ $(document).ready(function () {
             　　}
             });
         }
+        //通用提交
         $.ajax({
             type: 'POST',
             dataType:'json',
@@ -166,6 +155,9 @@ $(document).ready(function () {
         });
     });
 });
+/**
+ * 初始化回显
+ */
 function loadContent(){
     var formType = GetQueryString('formType');
     if('UED' == formType){
