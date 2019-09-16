@@ -323,4 +323,11 @@ a.language-selected { font-style: italic; font-weight: bold; }
     margin: 0 5px;
     cursor: pointer;
 }
+.divider {
+	border-bottom: 1px solid #e5e5e5;
+	padding: 5px;
+}
+.btn-toor-default{
+	background-color:#5EA6B7
+}
 /* borderActive */

@@ -149,7 +149,7 @@
 							</div>
 							<div class="view borderNoActive">
 								<div class="form-inline " style="display: flex;">
-									<label style="width: 100px;" for="">标题</label>
+									<label style="width: 100px; " for="">标题</label>
 									<input type="text" plugins="text" orgwidth="" orgheight="" orgname=" "
 										orgtype="text" class="form-control default getdom"  >
 								</div>
@@ -277,7 +277,6 @@
 	</div>
 	<div class="container">
 		<div class="demo ui-sortable" >
-		
 		</div>
 	</div>
 	<!--右侧属性栏目-->
@@ -314,7 +313,7 @@
 				<div class="modal-dialog">
 						<div class="modal-header">
 								<h4 class="modal-title">属性【输入框】</h4>
-							</div>
+						</div>
 							<div class="body-right height"  style="overflow:scroll;">
 								<form id="inputForm" role="form">
 									<div class="form-group">
@@ -323,10 +322,19 @@
 											placeholder="字段标题" style="width: 100%;">
 									</div>
 									<div class="form-group">
+										<div class="btn-group btn-toors">
+											<button type="button" class="btn btn-default btn-toor btn-toor-default" data-target="left">靠左</button>
+											<button type="button" class="btn btn-default btn-toor" data-target="center">居中</button>
+											<button type="button" class="btn btn-default btn-toor"  data-target="right">靠右</button>
+										</div>
+									</div>
+									<div class="divider"></div>
+									<div class="form-group">
 										<label for="name">字段名称</label>
 										<input type="text" name="fieldname" autocomplete="off" class="form-control fieldname"
 											placeholder="字段名称" style="width: 100%;">
 									</div>
+									<div class="divider"></div>
 									<div class="form-group">
 										<label for="name">默认值</label>
 										<select class="form-control isOrgValue" name="isOrgValue" id="sel1" placeholder="默认值"
@@ -340,6 +348,7 @@
 										<button type="button" class="btn btn-default btn-sm hide date_linkage" style="width:100%;margin-top: 5px;">数据联动设置</button><br>
 										<button type="button" class="btn btn-default btn-sm hide date_formula" style="width:100%;margin-top: -16px;">fx 编辑公式</button>
 									</div>
+									<div class="divider"></div>
 									<div class="form-group">
 										<label for="name">是否必填</label>
 										<select class="form-control isRequired" name="isRequired" id="sel1" placeholder="是否必填"
@@ -387,6 +396,14 @@
 								 <input type="text" name="orgname" autocomplete="off" class="form-control orgname" placeholder="字段标题" style="width:100%;"> 
 							</div>
 							<div class="form-group">
+								<div class="btn-group btn-toors">
+									<button type="button" class="btn btn-default btn-toor btn-toor-default" data-target="left">靠左</button>
+									<button type="button" class="btn btn-default btn-toor" data-target="center">居中</button>
+									<button type="button" class="btn btn-default btn-toor"  data-target="right">靠右</button>
+								</div>
+							</div>
+							<div class="divider"></div>
+							<div class="form-group">
 								<label for="name">字段名称</label>
 								<input type="text" name="fieldname" autocomplete="off" class="form-control fieldname"
 									placeholder="字段名称" style="width: 100%;">
@@ -431,6 +448,14 @@
 									style="width:100%;">
 							</div>
 							<div class="form-group">
+								<div class="btn-group btn-toors">
+									<button type="button" class="btn btn-default btn-toor btn-toor-default" data-target="left">靠左</button>
+									<button type="button" class="btn btn-default btn-toor" data-target="center">居中</button>
+									<button type="button" class="btn btn-default btn-toor"  data-target="right">靠右</button>
+								</div>
+							</div>
+							<div class="divider"></div>
+							<div class="form-group">
 								<label for="name">字段名称</label>
 								<input type="text" name="fieldname" autocomplete="off" class="form-control fieldname"
 									placeholder="字段名称" style="width:100%;">
@@ -457,6 +482,14 @@
 									<label for="name">字段标题</label>
 									 <input type="text" name="orgname" autocomplete="off" class="form-control orgname" placeholder="字段标题" style="width:100%;"> 
 								</div>
+								<div class="form-group">
+									<div class="btn-group btn-toors">
+										<button type="button" class="btn btn-default btn-toor btn-toor-default" data-target="left">靠左</button>
+										<button type="button" class="btn btn-default btn-toor" data-target="center">居中</button>
+										<button type="button" class="btn btn-default btn-toor"  data-target="right">靠右</button>
+									</div>
+								</div>
+								<div class="divider"></div>
 								<div class="form-group">
 									<label for="name">字段名称</label>
 									<input type="text" name="fieldname" autocomplete="off" class="form-control fieldname"
@@ -501,6 +534,14 @@
 										 <input type="text" name="orgname" autocomplete="off" class="form-control orgname" placeholder="字段标题" style="width:100%;"> 
 									</div>
 									<div class="form-group">
+											<div class="btn-group btn-toors">
+												<button type="button" class="btn btn-default btn-toor btn-toor-default" data-target="left">靠左</button>
+												<button type="button" class="btn btn-default btn-toor" data-target="center">居中</button>
+												<button type="button" class="btn btn-default btn-toor"  data-target="right">靠右</button>
+											</div>
+									</div>
+									<div class="divider"></div>
+									<div class="form-group">
 										<label for="name">字段名称</label>
 										<input type="text" name="fieldname" autocomplete="off" class="form-control fieldname"
 											placeholder="字段名称" style="width: 100%;">
@@ -544,6 +585,14 @@
 									<input type="text" name="orgname" autocomplete="off" class="form-control orgname" placeholder="字段标题"
 										style="width: 100%;">
 								</div>
+								<div class="form-group">
+									<div class="btn-group btn-toors">
+										<button type="button" class="btn btn-default btn-toor btn-toor-default" data-target="left">靠左</button>
+										<button type="button" class="btn btn-default btn-toor" data-target="center">居中</button>
+										<button type="button" class="btn btn-default btn-toor"  data-target="right">靠右</button>
+									</div>
+								</div>
+								<div class="divider"></div>
 								<div class="form-group">
 									<label for="name">字段名称</label>
 									<input type="text" name="fieldname" autocomplete="off" class="form-control fieldname"
