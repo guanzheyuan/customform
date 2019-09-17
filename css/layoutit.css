@@ -330,4 +330,11 @@ a.language-selected { font-style: italic; font-weight: bold; }
 .btn-toor-default{
 	background-color:#5EA6B7
 }
+.required>label:before {
+    content: "*";
+    color: red;
+    padding-left:-4px;
+    vertical-align: middle;
+    display: inline-block;
+}
 /* borderActive */
