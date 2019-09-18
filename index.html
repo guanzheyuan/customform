@@ -215,7 +215,7 @@
 							</div>
 							<div class="view borderNoActive">
 								<div class="form-inline" style="display: flex;">
-									<label style="width: 100px;" class="radio_label labelRadio" for="" label="left">标题</label><br>
+									<label style="width:93px;" class="radio_label labelRadio" for="" label="left">标题</label><br>
 									&nbsp;
 									<div class="radioDom">
 										<input type="radio" class="getdom hide" >
@@ -238,7 +238,7 @@
 							</div>
 							<div class="view borderNoActive">
 								<div class="form-inline" style="display: flex;">
-									<label style="width: 100px;" class="labelCheckBox" label="left" for="">标题</label><br>
+									<label style="width:93px;" class="labelCheckBox" label="left" for="">标题</label><br>
 									&nbsp;
 									<div class="checkDom">
 										<input type="checkbox"  class="getdom hide" style="vertical-align: initial;">
@@ -375,11 +375,11 @@
 										<input type="text" name="placeholder" autocomplete="off" class="form-control placeholder"
 											placeholder="占位内容" style="width: 100%;">
 									</div>
-									<div class="form-group">
+									<!-- <div class="form-group">
 										<label for="name">标签宽度</label>
 										<input type="number" class="form-control layoutCol" autocomplete="off" name="layoutCol"
 											value="0" min="0" max="900" step="1" style="width:100%" />
-									</div>
+									</div> -->
 								</form>
 							</div>
 				</div>
@@ -477,50 +477,50 @@
 					<h4 class="modal-title">属性【单选按钮】</h4>
 				</div>
 				<div class="body-right height"  style="overflow:scroll;">
-						<form id="selectForm" role="form">
-								<div class="form-group">
-									<label for="name">字段标题</label>
-									 <input type="text" name="orgname" autocomplete="off" class="form-control orgname" placeholder="字段标题" style="width:100%;"> 
+					<form id="selectForm" role="form">
+							<div class="form-group">
+								<label for="name">字段标题</label>
+									<input type="text" name="orgname" autocomplete="off" class="form-control orgname" placeholder="字段标题" style="width:100%;"> 
+							</div>
+							<div class="form-group">
+								<div class="btn-group btn-toors">
+									<button type="button" class="btn btn-default btn-toor btn-toor-default" data-target="left">靠左</button>
+									<button type="button" class="btn btn-default btn-toor" data-target="center">居中</button>
+									<button type="button" class="btn btn-default btn-toor"  data-target="right">靠右</button>
+								</div>
+							</div>
+							<div class="divider"></div>
+							<div class="form-group">
+								<label for="name">字段名称</label>
+								<input type="text" name="fieldname" autocomplete="off" class="form-control fieldname"
+									placeholder="字段名称" style="width: 100%;">
+							</div>
+							<div class="form-group">
+								<label for="name">是否必填</label>
+								<select class="form-control isRequired" name="isRequired" id="sel1" placeholder="是否必填"
+									style="width:100%;">
+									<option value="N">否</option>
+									<option value="Y">是</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="name">选项</label>
+								<select class="form-control isOrgValue" name="isOrgValue" id="sel1" placeholder="默认值"
+									style="width:100%;">
+									<option value="A">自定义</option>
+									<option value="B">关联其他表单数据</option>
+									<option value="C">数据联动</option>
+								</select>
+								&nbsp;
+								<div class="form-group addRadioOption" style="width:100%;">
+									
 								</div>
 								<div class="form-group">
-									<div class="btn-group btn-toors">
-										<button type="button" class="btn btn-default btn-toor btn-toor-default" data-target="left">靠左</button>
-										<button type="button" class="btn btn-default btn-toor" data-target="center">居中</button>
-										<button type="button" class="btn btn-default btn-toor"  data-target="right">靠右</button>
-									</div>
+										<button type="button" class="btn btn-link addOption " >添加选项</button>
 								</div>
-								<div class="divider"></div>
-								<div class="form-group">
-									<label for="name">字段名称</label>
-									<input type="text" name="fieldname" autocomplete="off" class="form-control fieldname"
-										placeholder="字段名称" style="width: 100%;">
-								</div>
-								<div class="form-group">
-									<label for="name">是否必填</label>
-									<select class="form-control isRequired" name="isRequired" id="sel1" placeholder="是否必填"
-										style="width:100%;">
-										<option value="N">否</option>
-										<option value="Y">是</option>
-									</select>
-								</div>
-								<div class="form-group">
-									<label for="name">选项</label>
-									<select class="form-control isOrgValue" name="isOrgValue" id="sel1" placeholder="默认值"
-										style="width:100%;">
-										<option value="A">自定义</option>
-										<option value="B">关联其他表单数据</option>
-										<option value="C">数据联动</option>
-									</select>
-									&nbsp;
-									<div class="form-group addRadioOption" style="width:100%;">
-										
-									</div>
-									<div class="form-group">
-											<button type="button" class="btn btn-link addOption " >添加选项</button>
-									</div>
-								</div>
-							</form>
-					</div>
+							</div>
+					</form>
+				</div>
 			</div>
 			<!-- modify checkBoxModal-->
 			<div id="editorCheckBoxModal_" class="hide " style="padding-right:10px;">
