@@ -168,7 +168,8 @@
 			var id  = $(obj).attr('id');
 			var dirId = $(obj).attr('dirId');
 			var formId = $(obj).attr('formId');
-			$("#myModal .bingdFormsel").selectpicker("val",formId+'&'+dirId);
+			var dirName = $(obj).attr('dirName');
+			$("#myModal .bingdFormsel").selectpicker("val",formId+'&'+dirId+'&'+dirName);
 			$("#myModal [name=name]").val(name);
 			$("#myModal [name=code]").val(code);
 			$("#myModal [name=common]").val(common);
@@ -235,7 +236,7 @@
 								width: 200,
 								data: 'formType',
 								render: function (data, type, full, meta) {
-									return '<a class="btn btn-primary" id="' +full.id + '"  name="'+full.name+'" code="'+full.code+'" formType="'+full.formType+'" common="'+full.common+'" formId="'+full.formId+'" dirId="'+full.dirId+'" onclick="javascript:editShow(this)">编辑</a>&nbsp;&nbsp;<a class="btn btn-info design" dirname="'+full.dirName+'"  title="' +full.id + '" type="'+full.formType+'" formId="'+full.formId+'" dirId="'+full.dirId+'" onclick="javascript:design(this)">设计</a>&nbsp;&nbsp;<a class="btn btn-danger" id="' +full.id + '" onclick="javascript:deleteRow(this)">删除</a>';
+									return '<a class="btn btn-primary" id="' +full.id + '"  name="'+full.name+'" code="'+full.code+'" formType="'+full.formType+'" common="'+full.common+'" formId="'+full.formId+'" dirId="'+full.dirId+'" dirName="'+full.dirName+'" onclick="javascript:editShow(this)">编辑</a>&nbsp;&nbsp;<a class="btn btn-info design" dirname="'+full.dirName+'"  title="' +full.id + '" type="'+full.formType+'" formId="'+full.formId+'" dirId="'+full.dirId+'" onclick="javascript:design(this)">设计</a>&nbsp;&nbsp;<a class="btn btn-danger" id="' +full.id + '" onclick="javascript:deleteRow(this)">删除</a>';
 								}
 							}
 						],
