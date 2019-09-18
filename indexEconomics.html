@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+	<title>可视化表单绘制器</title>
+	<meta name="keywords" content="bootstrap,ibootstrap,爱bootstrap,可视化,操作,布局">
+	<meta name="description" content="LayoutIt! 可拖放排序在线编辑的Bootstrap可视化布局系统">
+	<link href="./css/bootstrap.min.css" rel="stylesheet">
+	<link href="./css/layoutit.css" rel="stylesheet">
+	<link href="./css/control.css" rel="stylesheet">
+	<!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<![endif]-->
+	<script src="./js/jquery.min.js"></script>
+	<script src="./js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="./js/jquery.ui.touch-punch.min.js"></script>
+	<script type="text/javascript" src="./js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="./js/jquery.htmlClean.js"></script>
+	<script type="text/javascript" src="./js/scripts.min.js"></script>
+	<script src="./ueditor/ueditor.config.js"></script>
+	<script src="./ueditor/ueditor.all.js"></script>
+	<script src="./js/config.js"></script>
+	<script src="./js/data.js"></script>
+</head>
+<body class="edit" style="min-height: 798px;overflow:scroll;overflow-y:hidden">
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div style="margin-left: 20px;">
+				<a class="brand" href="main.html">
+					<img src="images/logo.png" class="logo" />自定义表单设计器
+				</a>
+				<ul class="nav" id="menu-layoutit" style="margin-left:30px;display: inline-block;">
+					<li>
+						<div class="btn-group" data-toggle="buttons-radio">
+							<button class="btn btn-xs btn-primary" style="background-color:#1180eb;border-color:#1180eb" href="./main.html" id="back"
+								onclick="clickBack()">
+								<i class="glyphicon-backward glyphicon"></i>
+								返回列表
+							</button>
+						</div>
+						<div class="btn-group" data-toggle="buttons-radio">
+							<button type="button" id="edit" class="active btn btn-xs btn-primary"> <i
+									class="glyphicon glyphicon-edit "></i>
+								编辑
+							</button>
+							<!-- <button type="button" class="btn btn-xs btn-primary" id="devpreview">
+								<i class="glyphicon-eye-close glyphicon"></i>
+								开发
+							</button> -->
+							<button type="button" class="btn btn-xs btn-primary" id="sourcepreview">
+								<i class="glyphicon-eye-open glyphicon"></i>
+								预览
+							</button>
+						</div>
+						<div class="btn-group">
+							<button type="button" class="btn btn-xs btn-primary" id="button-JSON-modal"
+								data-target="#toJsonModal" role="button" data-toggle="modal"> <i
+									class="glyphicon-chevron-down glyphicon"></i>
+								转JSON
+							</button>
+							<button class="btn btn-xs btn-primary" href="#clear" id="clear">
+								<i class="glyphicon-trash glyphicon"></i>
+								清空
+							</button>
+						</div>
+						<div class="btn-group">
+							<button class="btn btn-xs btn-primary saveFrom">
+								<i class="glyphicon-save glyphicon "></i>
+								保存
+							</button>
+							
+						</div>
+					</li>
+				</ul>
+				<div class="nav-collapse collapse navbar-inverse-collapse">
+					<ul class="nav pull-right">
+						<li class="nav-user dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								<img src="images/user.png" class="nav-avatar">
+								<b class="caret"></b>
+							</a>
+						</li>
+					</ul>
+				</div><!-- /.nav-collapse -->
+			</div>
+		</div><!-- /navbar-inner -->
+	</div>
+	<!-- 左侧控件 -->
+	<div class="sidebar-nav">
+		<aside class="el-aside" style="width: 250px;">
+			<div class="components-list">
+				<div class="widget-cate">布局</div>
+				<ul>
+					<li class="rows form-edit-widget-label" id="estRows">
+						<div class="lyrow ui-draggable grid-layout addLayout" onclick="clickFix(this)" >
+							<span class="layoutDrag drag" style="width:85%;height:100%;left:0;top:0;">
+								<!-- <i class="glyphicon glyphicon-move" style="opacity: 0;"></i> -->
+								<i class="iconfont icon-drag drag-widget remove2 hide"></i>
+							</span>
+							<div class="preview">
+								<i class="icon iconfont icon-input"
+									style="padding-left: 5px;padding-right:5px;"></i><span>栅格布局</span>
+							</div>
+							<div class="view borderNoActive" >
+								<div class="clearfix " >
+									<div class="col-md-12 column" type="grid-layout" ></div>
+								</div>
+								<div class="widget-view-action remove2 hide">
+									<i class="iconfont icon-trash"></i>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<div class="widget-cate">基本组件</div>
+				<ul>
+					<li class="rows form-edit-widget-label">
+						<div class="box box-element ui-draggable addElement" onclick="clickFix(this)" >
+							<span class="drag UEditorclick" style="width:85%;height:100%;left:0;top:0;">
+								<i class="glyphicon glyphicon-move" style="opacity: 0;"></i>
+							</span>
+							<div class="preview">
+								<i class="icon iconfont icon-input"
+									style="padding-left: 5px;padding-right:5px;"></i><span>输入框</span>
+							</div>
+							<div class="view borderNoActive">
+								<div class="form-inline " style="display: flex;">
+									<label style="width: 100px; " for="" label="left">标题</label>
+									<input type="text" plugins="text" orgwidth="" orgheight="" orgname=" "
+										orgtype="text" class="form-control default getdom"  >
+								</div>
+								<div class="widget-view-action remove2 hide">
+										<i class="iconfont icon-trash"></i>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="rows form-edit-widget-label">
+						<div class="box box-element ui-draggable addElement" onclick="clickFix(this)">
+							<span class="drag UEditorclick" style="width:85%;height:100%;left:0;top:0;">
+								<i class="glyphicon glyphicon-move" style="opacity: 0;"></i>
+							</span>
+							<div class="preview">
+								<i class="icon iconfont icon-select"
+									style="padding-left: 5px;padding-right:5px;"></i><span>下拉框</span>
+							</div>
+							<div class="view borderNoActive">
+								<div class="form-inline " style="display: flex;">
+									<label style="width: 100px;" for="" label="left">标题</label>
+									<select class="form-control getdom" id="" type="select" orgwidth="" orgheight=""
+										orgname=" " style="width:100%;">
+									</select>
+								</div>
+								<div class="widget-view-action remove2 hide">
+										<i class="iconfont icon-trash"></i>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="rows form-edit-widget-label">
+						<div class="box box-element ui-draggable addElement" onclick="clickFix(this)">
+							<span class="drag UEditorclick" style="width:85%;height:100%;left:0;top:0;">
+								<i class="glyphicon glyphicon-move" style="opacity: 0;"></i>
+							</span>
+							<div class="preview">
+								<i class="icon iconfont icon-diy-com-textarea"
+									style="padding-left: 5px;padding-right:5px;"></i><span>文本框</span>
+							</div>
+							<div class="view borderNoActive">
+								<div class="form-inline " style="display: flex;">
+									<label style="width: 100px;" for="" label="left">标题</label>
+									<textarea name="" id="" type="textarea" plugins="textarea" title="" fieldname=""
+										orgwidth="" orgheight="" orgfontsize="" isrequired=""
+										class="form-control getdom" seq="" columns="" ifreturn="N"
+										style="width:100%; height:50px;"></textarea>
+								</div>
+								<div class="widget-view-action remove2 hide">
+										<i class="iconfont icon-trash"></i>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="rows form-edit-widget-label">
+						<div class="box box-element ui-draggable addElement" onclick="clickFix(this)">
+							<span class="drag UEditorclick" style="width:85%;height:100%;left:0;top:0;">
+								<i class="glyphicon glyphicon-move" style="opacity: 0;"></i>
+							</span>
+							<div class="preview">
+								<i class="icon iconfont icon-radio-active"
+									style="padding-left: 5px;padding-right:5px;"></i><span>单选</span>
+							</div>
+							<div class="view borderNoActive">
+								<div class="form-inline" style="display: flex;">
+									<label style="width:93px;" class="radio_label labelRadio" for="" label="left">标题</label><br>
+									&nbsp;
+									<div class="radioDom">
+										<input type="radio" class="getdom hide" >
+									</div>
+								</div>
+								<div class="widget-view-action remove2 hide">
+										<i class="iconfont icon-trash"></i>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="rows form-edit-widget-label">
+						<div class="box box-element ui-draggable addElement" onclick="clickFix(this)">
+							<span class="drag UEditorclick" style="width:85%;height:100%;left:0;top:0;">
+								<i class="glyphicon glyphicon-move" style="opacity: 0;"></i>
+							</span>
+							<div class="preview">
+								<i class="icon iconfont icon-check-box"
+									style="padding-left: 5px;padding-right:5px;"></i><span>多选</span>
+							</div>
+							<div class="view borderNoActive">
+								<div class="form-inline" style="display: flex;">
+									<label style="width:93px;" class="labelCheckBox" label="left" for="">标题</label><br>
+									&nbsp;
+									<div class="checkDom">
+										<input type="checkbox"  class="getdom hide" style="vertical-align: initial;">
+									</div>
+								</div>
+								<div class="widget-view-action remove2 hide">
+										<i class="iconfont icon-trash"></i>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="rows form-edit-widget-label">
+						<div class="box box-element ui-draggable addElement" onclick="clickFix(this)">
+							<span class="drag UEditorclick" style="width:85%;height:100%;left:0;top:0;">
+								<i class="glyphicon glyphicon-move" style="opacity: 0;"></i>
+							</span>
+							<div class="preview">
+								<i class="icon iconfont icon-time"
+									style="padding-left: 5px;padding-right:5px;"></i><span>时间</span>
+							</div>
+							<div class="view borderNoActive">
+								<div class="form-inline" style="display: flex;">
+									<label style="width: 100px;" for="" label="left">标题</label>
+									<input type="date" class="form-control getdom"
+										style="vertical-align: initial; width:100%;">
+								</div>
+								<div class="widget-view-action remove2 hide">
+										<i class="iconfont icon-trash"></i>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</aside>
+	</div>
+	<div class="container">
+		<div class="demo ui-sortable" >
+		</div>
+	</div>
+	<!--右侧属性栏目-->
+	<div class="sidebar-nav-right"  style="width: 20%;">
+		<aside class="el-aside" style="width:100%;">
+			<!-- modify layout-->
+			<div id="editorLayout" class="hide " style="padding-right:10px;" >
+				<div class="modal-dialog">
+						<div class="modal-header">
+								<h4 class="modal-title">属性【栅格布局】</h4>
+							</div>
+							<div class="body-right height" style="overflow:scroll;">
+								<form id="layoutForm" role="form">
+									<div id="download-logged" class="">
+										<div class="alert alert-info">一共12列，请输入对应的列数，以及对应的比例
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="name">列配置（一行所占列）</label>
+										<select class="form-control layoutCol" name="layoutCol" id="sel1" placeholder="数据类型"
+											style="width:100%;">
+											<option value="1">一行一列</option>
+											<option value="2">一行两列</option>
+											<option value="3">一行三列</option>
+											<option value="4">一行四列</option>
+										</select>
+									</div>
+								</form>
+							</div>
+				</div>
+			</div>
+			<!-- modify inputModal-->
+			<div id="editorInputModal_" class="hide "  style="padding-right:10px;" >
+				<div class="modal-dialog">
+						<div class="modal-header">
+								<h4 class="modal-title">属性【输入框】</h4>
+						</div>
+							<div class="body-right height"  style="overflow:scroll;">
+								<form id="inputForm" role="form">
+									<div class="form-group">
+										<label for="name">字段标题</label>
+										<input type="text" name="orgname" autocomplete="off" class="form-control orgname"
+											placeholder="字段标题" style="width: 100%;">
+									</div>
+									<div class="form-group">
+										<div class="btn-group btn-toors">
+											<button type="button" class="btn btn-default btn-toor btn-toor-default" data-target="left">靠左</button>
+											<button type="button" class="btn btn-default btn-toor" data-target="center">居中</button>
+											<button type="button" class="btn btn-default btn-toor"  data-target="right">靠右</button>
+										</div>
+									</div>
+									<div class="divider"></div>
+									<div class="form-group">
+										<label for="name">字段名称</label>
+										<input type="text" name="fieldname" autocomplete="off" class="form-control fieldname"
+											placeholder="字段名称" style="width: 100%;">
+									</div>
+									<div class="divider"></div>
+									<div class="form-group">
+										<label for="name">默认值</label>
+										<select class="form-control isOrgValue" name="isOrgValue" id="sel1" placeholder="默认值"
+											style="width:100%;">
+											<option value="A">自定义</option>
+											<option value="B">数据联动</option>
+											<option value="C">编辑功式</option>
+										</select>
+										<input type="text" name="orgvalue" autocomplete="off" class="form-control orgvalue"
+											placeholder="默认值" style="width: 100%;margin-top: 5px;">
+										<button type="button" class="btn btn-default btn-sm hide date_linkage" style="width:100%;margin-top: 5px;">数据联动设置</button><br>
+										<button type="button" class="btn btn-default btn-sm hide date_formula" style="width:100%;margin-top: -16px;">fx 编辑公式</button>
+									</div>
+									<div class="divider"></div>
+									<div class="form-group">
+										<label for="name">是否必填</label>
+										<select class="form-control isRequired" name="isRequired" id="sel1" placeholder="是否必填"
+											style="width:100%;">
+											<option value="N">否</option>
+											<option value="Y">是</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label for="name">数据类型</label>
+										<select class="form-control orgtype" name="orgtype" id="sel1" placeholder="数据类型"
+											style="width:100%;">
+											<option value="text">普通文本</option>
+											<option value="/^[A-Za-zd]+([-_.][A-Za-zd]+)*@([A-Za-zd]+[-.])+[A-Za-zd]{2,4}$/">
+												邮箱地址</option>
+											<option value="/^([1-9]d*|[0]{1,1})$/">正整数</option>
+											<option value="/^[1][3,4,5,7,8][0-9]{9}$/">手机号</option>
+											<option value="/(^d{15}$)|(^d{18}$)|(^d{17}(d|X|x)$)/">身份证号码</option>
+											<option value="other">其他</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label for="name">占位内容</label>
+										<input type="text" name="placeholder" autocomplete="off" class="form-control placeholder"
+											placeholder="占位内容" style="width: 100%;">
+									</div>
+									<!-- <div class="form-group">
+										<label for="name">标签宽度</label>
+										<input type="number" class="form-control layoutCol" autocomplete="off" name="layoutCol"
+											value="0" min="0" max="900" step="1" style="width:100%" />
+									</div> -->
+								</form>
+							</div>
+				</div>
+			</div>
+			<!-- modify selectModal-->
+			<div id="editorSelectModal_" class="hide " style="padding-right:10px;" >
+				<div class="modal-header">
+					<h4 class="modal-title">属性【下拉框】</h4>
+				</div>
+				<div class="body-right height" style="overflow:scroll;height:500px;">
+					<form id="selectForm" role="form">
+							<div class="form-group">
+								<label for="name">字段标题</label>
+								 <input type="text" name="orgname" autocomplete="off" class="form-control orgname" placeholder="字段标题" style="width:100%;"> 
+							</div>
+							<div class="form-group">
+								<div class="btn-group btn-toors">
+									<button type="button" class="btn btn-default btn-toor btn-toor-default" data-target="left">靠左</button>
+									<button type="button" class="btn btn-default btn-toor" data-target="center">居中</button>
+									<button type="button" class="btn btn-default btn-toor"  data-target="right">靠右</button>
+								</div>
+							</div>
+							<div class="divider"></div>
+							<div class="form-group">
+								<label for="name">字段名称</label>
+								<input type="text" name="fieldname" autocomplete="off" class="form-control fieldname"
+									placeholder="字段名称" style="width: 100%;">
+							</div>
+							<div class="form-group">
+								<label for="name">是否必填</label>
+								<select class="form-control isRequired" name="isRequired" id="sel1" placeholder="是否必填"
+									style="width:100%;">
+									<option value="N">否</option>
+									<option value="Y">是</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="name">选项</label>
+								<select class="form-control isOrgValue" name="isOrgValue" id="sel1" placeholder="默认值"
+									style="width:100%;">
+									<option value="A">自定义</option>
+									<option value="B">关联其他表单数据</option>
+									<option value="C">数据联动</option>
+								</select>
+								&nbsp;
+								<div class="form-group addSelectOption" style="width:100%;">
+									
+								</div>
+								<div class="form-group">
+										<button type="button" class="btn btn-link addOption " >添加选项</button>
+								</div>
+							</div>
+						</form>
+				</div>
+			</div>
+			<!-- modify textAreaModal-->
+			<div id="editorTexareaModal_" class="hide "  style="padding-right:10px;">
+				<div class="modal-header">
+						<h4 class="modal-title">属性【文本框】</h4>
+				</div>
+				<div class="body-right height" style="overflow:scroll;">
+					<form id="textareaForm" role="form">
+							<div class="form-group">
+								<label for="name">字段标题</label>
+								<input type="text" name="orgname" autocomplete="off" class="form-control orgname" placeholder="字段标题"
+									style="width:100%;">
+							</div>
+							<div class="form-group">
+								<div class="btn-group btn-toors">
+									<button type="button" class="btn btn-default btn-toor btn-toor-default" data-target="left">靠左</button>
+									<button type="button" class="btn btn-default btn-toor" data-target="center">居中</button>
+									<button type="button" class="btn btn-default btn-toor"  data-target="right">靠右</button>
+								</div>
+							</div>
+							<div class="divider"></div>
+							<div class="form-group">
+								<label for="name">字段名称</label>
+								<input type="text" name="fieldname" autocomplete="off" class="form-control fieldname"
+									placeholder="字段名称" style="width:100%;">
+							</div>
+							<div class="form-group">
+								<label for="name">是否必填</label>
+								<select class="form-control isRequired" name="isRequired" id="sel1" placeholder="是否必填"
+									style="width:100%;">
+									<option value="N">否</option>
+									<option value="Y">是</option>
+								</select>
+							</div>
+					</form>
+				</div>
+			</div>
+			<!-- modify radioModal-->
+			<div id="editorRadioModal_" class="hide " style="padding-right:10px;">
+				<div class="modal-header">
+					<h4 class="modal-title">属性【单选按钮】</h4>
+				</div>
+				<div class="body-right height"  style="overflow:scroll;">
+					<form id="selectForm" role="form">
+							<div class="form-group">
+								<label for="name">字段标题</label>
+									<input type="text" name="orgname" autocomplete="off" class="form-control orgname" placeholder="字段标题" style="width:100%;"> 
+							</div>
+							<div class="form-group">
+								<div class="btn-group btn-toors">
+									<button type="button" class="btn btn-default btn-toor btn-toor-default" data-target="left">靠左</button>
+									<button type="button" class="btn btn-default btn-toor" data-target="center">居中</button>
+									<button type="button" class="btn btn-default btn-toor"  data-target="right">靠右</button>
+								</div>
+							</div>
+							<div class="divider"></div>
+							<div class="form-group">
+								<label for="name">字段名称</label>
+								<input type="text" name="fieldname" autocomplete="off" class="form-control fieldname"
+									placeholder="字段名称" style="width: 100%;">
+							</div>
+							<div class="form-group">
+								<label for="name">是否必填</label>
+								<select class="form-control isRequired" name="isRequired" id="sel1" placeholder="是否必填"
+									style="width:100%;">
+									<option value="N">否</option>
+									<option value="Y">是</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="name">选项</label>
+								<select class="form-control isOrgValue" name="isOrgValue" id="sel1" placeholder="默认值"
+									style="width:100%;">
+									<option value="A">自定义</option>
+									<option value="B">关联其他表单数据</option>
+									<option value="C">数据联动</option>
+								</select>
+								&nbsp;
+								<div class="form-group addRadioOption" style="width:100%;">
+									
+								</div>
+								<div class="form-group">
+										<button type="button" class="btn btn-link addOption " >添加选项</button>
+								</div>
+							</div>
+					</form>
+				</div>
+			</div>
+			<!-- modify checkBoxModal-->
+			<div id="editorCheckBoxModal_" class="hide " style="padding-right:10px;">
+					<div class="modal-header">
+						<h4 class="modal-title">属性【选按钮】</h4>
+					</div>
+					<div class="body-right height" style="overflow:scroll;">
+							<form id="selectForm" role="form">
+									<div class="form-group">
+										<label for="name">字段标题</label>
+										 <input type="text" name="orgname" autocomplete="off" class="form-control orgname" placeholder="字段标题" style="width:100%;"> 
+									</div>
+									<div class="form-group">
+											<div class="btn-group btn-toors">
+												<button type="button" class="btn btn-default btn-toor btn-toor-default" data-target="left">靠左</button>
+												<button type="button" class="btn btn-default btn-toor" data-target="center">居中</button>
+												<button type="button" class="btn btn-default btn-toor"  data-target="right">靠右</button>
+											</div>
+									</div>
+									<div class="divider"></div>
+									<div class="form-group">
+										<label for="name">字段名称</label>
+										<input type="text" name="fieldname" autocomplete="off" class="form-control fieldname"
+											placeholder="字段名称" style="width: 100%;">
+									</div>
+									<div class="form-group">
+										<label for="name">是否必填</label>
+										<select class="form-control isRequired" name="isRequired" id="sel1" placeholder="是否必填"
+											style="width:100%;">
+											<option value="N">否</option>
+											<option value="Y">是</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label for="name">选项</label>
+										<select class="form-control isOrgValue" name="isOrgValue" id="sel1" placeholder="默认值"
+											style="width:100%;">
+											<option value="A">自定义</option>
+											<option value="B">关联其他表单数据</option>
+											<option value="C">数据联动</option>
+										</select>
+										&nbsp;
+										<div class="form-group addCheckboxOption" style="width:100%;">
+											
+										</div>
+										<div class="form-group">
+												<button type="button" class="btn btn-link addOption " >添加选项</button>
+										</div>
+									</div>
+								</form>
+						</div>
+			</div>
+			<!--modify dateTime-->
+			<div id="editorDateTimeModal_" class="hide " style="padding-right:10px;" >
+					<div class="modal-header">
+						<h4 class="modal-title">属性【时间框】</h4>
+					</div>
+					<div class="body-right height" style="overflow:scroll;">
+							<form id="dateTimeForm" role="form">
+								<div class="form-group">
+									<label for="name">字段标题</label>
+									<input type="text" name="orgname" autocomplete="off" class="form-control orgname" placeholder="字段标题"
+										style="width: 100%;">
+								</div>
+								<div class="form-group">
+									<div class="btn-group btn-toors">
+										<button type="button" class="btn btn-default btn-toor btn-toor-default" data-target="left">靠左</button>
+										<button type="button" class="btn btn-default btn-toor" data-target="center">居中</button>
+										<button type="button" class="btn btn-default btn-toor"  data-target="right">靠右</button>
+									</div>
+								</div>
+								<div class="divider"></div>
+								<div class="form-group">
+									<label for="name">字段名称</label>
+									<input type="text" name="fieldname" autocomplete="off" class="form-control fieldname"
+										placeholder="字段名称" style="width: 100%;">
+								</div>
+								<div class="form-group">
+									<label for="name">是否必填</label>
+									<select class="form-control isRequired" name="isRequired" id="sel1" placeholder="是否必填"
+										style="width:100%;">
+										<option value="N">否</option>
+										<option value="Y">是</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="name">时间类型</label>
+									<select class="form-control type" name="type" placeholder="时间类型" style="width: 100%;">
+										<option value="date">年月日</option>
+										<option value="time">上午/下午|时分</option>
+										<option value="datetime-local">年月日|上午/下午</option>
+										<option value="month">年月</option>
+										<option value="week">年周</option>
+									</select>
+								</div>
+							</form>
+						</div>
+			</div>
+		</aside>
+	</div>
+	<!--toJsonModal Modal-->
+	<div class="modal fade" id="toJsonModal" tabindex="-1" role="dialog" aria-labelledby="toJsonModal"
+		aria-hidden="true" style="display: none;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h4 class="modal-title">转JSON</h4>
+				</div>
+				<div class="modal-body">
+					<div id="download-logged" class="">
+						<div class="alert alert-info">已在下面生成干净的JSON<br>
+						</div>
+						<p>
+							<textarea style="width:100%;height:250px;"></textarea>
+						</p>
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	function clickBack(){
+		var SP_ID= GetQueryString("SP_ID");
+		window.open("mainEconomics.html?SP_ID="+SP_ID,"_self")
+	}
+	function GetQueryString(key){
+		// 获取参数
+		var url = window.location.search;
+		// 正则筛选地址栏
+		var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+		// 匹配目标参数
+		var result = url.substr(1).match(reg);
+		//返回参数值
+		return result ? decodeURIComponent(result[2]) : null;
+	}
+</script>
