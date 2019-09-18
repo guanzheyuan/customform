@@ -156,7 +156,7 @@
 			if('UED' == $(obj).attr('type')){
 				url = "./index.html?id=" + $(obj).attr('title')+"&formType="+$(obj).attr('type');
 			}else if('UEG' == $(obj).attr('type')){
-				url = "./indexEconomics.html?id=" + $(obj).attr('title')+"&formType="+$(obj).attr('type')+"&UEG="+$(obj).attr('formId')+'^'+$(obj).attr('dirId')+'&dirName='+$(obj).attr('dirName');
+				url = "./indexEconomics.html?id=" + $(obj).attr('title')+"&formType="+$(obj).attr('type')+"&UEG="+$(obj).attr('formId')+'!'+$(obj).attr('dirId')+'&dirName='+$(obj).attr('dirName');
 			}
 			window.open(url, "_self");
 		}

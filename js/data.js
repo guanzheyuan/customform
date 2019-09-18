@@ -100,8 +100,8 @@ $(document).ready(function () {
             var content  = $(".demo").html();
             downloadLayoutSrc();
             loadJson();
-            var formId  = UEG.split('^')[0];
-            var dirId = UEG.split('^')[1];
+            var formId  = UEG.split('!')[0];
+            var dirId = UEG.split('!')[1];
             var $content = strimgTurnDom(content);
             content = content.replace(/borderActive/g,"borderNoActive");
             content = content.replace(/remove2/g,"remove2 hide");
