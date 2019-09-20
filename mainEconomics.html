@@ -389,6 +389,7 @@
 				contentType: "application/x-www-form-urlencoded",
 				url: configJson.loadJJURl.loadForm,
 				success:function(data){
+					console.log(data);
 					var optGroup = '<optgroup  label="默认"><option  value=" ">请选择</option></optgroup>';
 					var option = '';
 					if(data){
@@ -396,7 +397,9 @@
 							optGroup+='<optgroup  aria-valuenow="'+data[i].dirId+'" label="'+data[i].dirName+'">';
 							if(data[i].childList.length > 0){
 								for(var j = 0;j<data[i].childList.length;j++){
-									option+='<option value='+data[i].childList[j].formId+'&'+data[i].dirId+'&'+data[i].childList[j].formName+'>'+data[i].childList[j].formName+'</option>';
+									if(data[i].childList[j].isValid == 1){
+										option+='<option value='+data[i].childList[j].formId+'&'+data[i].dirId+'&'+data[i].childList[j].formName+'>'+data[i].childList[j].formName+'</option>';
+									}
 								}
 								optGroup+=option+'</optgroup>';
 								option = '';
